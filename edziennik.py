@@ -12,15 +12,20 @@ with open(r"C:\Users\lukas\Desktop\VULCAN API\keystore.json") as f:
 
     
 async def main():
+    #czysci terminal za kazdym razem
     os.system('cls')
+
     client = Vulcan(keystore, account)
     await client.select_student()
     
     #ustala obecną date
     present = datetime.now()
     
+    #pobiera info o sprawdzianach do zmiennej
     exam = await client.data.get_exams()
-        
+    
+    exam_list = []
+    
     async for ex_info in exam:
         #kod odpowiedzialny za dodawanie tylko tych sprawdzianow, ktorych jeszcze nie bylo
         str_date_deadline = str(ex_info.deadline)
@@ -28,19 +33,11 @@ async def main():
         
         if(present<=dtt_date_deadline):
             exam_topic = str(ex_info.topic)
-            print(exam_topic)
             
-        
-        
-
-    
-
-    #exam = [ex_info async for ex_info in exam]
-    #print(exam[0])
-    #for ex_info in exam:
-    #    print(ex_info.topic)
-
-    
+            exam_list.append(exam_topic)
+            
+                
+    print (exam_list)
     await client.close()
     
 

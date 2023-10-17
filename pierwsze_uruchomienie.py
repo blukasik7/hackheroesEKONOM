@@ -10,8 +10,8 @@ async def main():
     #zmienne przepisane z panelu Dostep Zdalny w dzienniku UONET
     token = '3S1KFFD'
     symbol = 'opole'
-    pin = 355482
-    #rejestrowanie konta(urządzenia) w dzienniku UONET
+    pin = '355482'
+    #rejestrowanie konta(urządzenia) w dzienniku UONET !!!TY WPISZ SWOJE!!!
     account = await Account.register(keystore, token, symbol, pin)
     #zapisywanie klucza w pliku json 
     with open("keystore.json", "w") as f:

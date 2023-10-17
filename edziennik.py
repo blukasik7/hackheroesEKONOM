@@ -2,11 +2,11 @@ from vulcan import *
 import asyncio
 
 
-#wczytywanie danych o koncie ze wczesniej zapisanego pliku json
-with open("account.json") as f:
+#wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
+with open(r"C:\Users\lukas\Desktop\VULCAN API\account.json") as f:
     account = Account.load(f.read())
-#wczytywanie klucza ze wczesniej zapisanego pliku json
-with open("keystore.json") as f:
+#wczytywanie klucza ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
+with open(r"C:\Users\lukas\Desktop\VULCAN API\keystore.json") as f:
     keystore = Keystore.load(f.read())
 
 

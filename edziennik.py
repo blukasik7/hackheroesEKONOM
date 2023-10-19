@@ -4,7 +4,6 @@ import vulcan
 from datetime import datetime
 import os
 
-
 # wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\account.json") as f:
     account = Account.load(f.read())
@@ -24,6 +23,13 @@ async def main():
     # ustala obecną date
     present = datetime.now()
 
+    # próba odczytywania tematów lekcji z dnia poprzedniego
+    lessons = await client.data.get_lessons()
+    async for lesson in lessons:
+
+        print(lesson.event)
+        print(lesson.subject.name)
+
     # pobiera info o sprawdzianach do zmiennej
     exam = await client.data.get_exams()
     # pusta lista na tematy sprawdzianów
@@ -40,13 +46,12 @@ async def main():
 
             exam_list.append(exam_topic)
 
-    print(exam_list)
-
     # zwraca wartosc wszystkich indeksow z listy
 
     def return_all(list: list):
         return '. '.join(map(str, list))
 
+    print(return_all(exam_list))
     html_template = "<!DOCTYPE html> <html>\
     <head><meta charset="+'"UTF-8">' + \
         "</head>\

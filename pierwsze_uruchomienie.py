@@ -6,6 +6,7 @@ import asyncio
 
 async def main():
 
+    #próbuje cos zrobic, niewazne
     f = open("test.txt", "r")
     for line in f:
         print(line, end="")

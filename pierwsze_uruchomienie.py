@@ -5,6 +5,13 @@ import json
 import asyncio
 
 async def main():
+
+    f = open("test.txt", "r")
+    for line in f:
+        print(line, end="")
+
+
+
     #tworzenie klucza (przez dostep zdalny na dzienniku UONET)
     keystore = await Keystore.create(device_model="Vulcan API")
     #zmienne przepisane z panelu Dostep Zdalny w dzienniku UONET

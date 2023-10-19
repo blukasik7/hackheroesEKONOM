@@ -4,6 +4,7 @@ import vulcan
 from datetime import datetime
 import os
 
+
 # wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\account.json") as f:
     account = Account.load(f.read())
@@ -15,6 +16,7 @@ with open(r"C:\keystore.json") as f:
 async def main():
     # czysci terminal za kazdym razem
     os.system('cls')
+
     # tworzenie obiektu Vulcan
     client = Vulcan(keystore, account)
     await client.select_student()
@@ -39,18 +41,19 @@ async def main():
             exam_list.append(exam_topic)
 
     print(exam_list)
-    print(len(exam_list))
-    #dodaje tylko pierwszy element listy do HTMLA a ma dodawać wszystkie
-    def print_loop(list: list):
-        list_length = len(list)
-        for i in range(0, list_length):
-            list_str = str(list[i])
-            return [list_str]
 
-    print(print_loop(exam_list))
+    # zwraca wartosc wszystkich indeksow z listy
 
-    html_template = "<!DOCTYPE html> <html><head><meta charset="+'"UTF-8">' + \
-        "</head><body>" + str(print_loop(exam_list)) + "</body> </html>"
+    def return_all(list: list):
+        return '. '.join(map(str, list))
+
+    html_template = "<!DOCTYPE html> <html>\
+    <head><meta charset="+'"UTF-8">' + \
+        "</head>\
+            <body>" \
+                + return_all(exam_list) + "</body> \
+            </html>"
+
     web_doc = open('website.html', "w", encoding="utf-8")
     web_doc.write(html_template)
     await client.close()

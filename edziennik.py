@@ -22,13 +22,19 @@ async def main():
 
     # ustala obecną date
     present = datetime.now()
-
+    
+    #pobiera imie i nazwisko ucznia
+    name = client.student.full_name
+    print(name)
+    name_doc = open('data/name.txt', 'w', encoding="utf-8")
+    name_doc.write(name)
+    name_doc.close()
     # próba odczytywania tematów lekcji z dnia poprzedniego
-    lessons = await client.data.get_lessons()
-    async for lesson in lessons:
-
-        print(lesson.event)
-        print(lesson.subject.name)
+    #lessons = await client.data.get_lessons()
+    #async for lesson in lessons:
+        
+    #    print(lesson.event)
+    #    print(lesson.subject.name)
 
     # pobiera info o sprawdzianach do zmiennej
     exam = await client.data.get_exams()
@@ -54,9 +60,11 @@ async def main():
     print(return_all(exam_list))
     all_exams = return_all(exam_list)
 
-    exam_doc = open('exams.txt', "w", encoding="utf-8")
+    exam_doc = open('data/exams.txt', "w", encoding="utf-8")
     exam_doc.write(all_exams)
+    exam_doc.close()
     await client.close()
+   
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()

@@ -10,7 +10,7 @@ async def main():
     os.system('cls')
     # próbuje cos zrobic, niewazne
     login_list = []
-    f = open("uonet_pass.txt", "r")
+    f = open("data/uonet_pass.txt", "r")
     for line in f:
         login_line = str(line)
         removed_suffix = login_line.removesuffix("\n")

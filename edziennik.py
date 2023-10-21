@@ -44,23 +44,18 @@ async def main():
         if (present <= dtt_date_deadline):
             exam_topic = str(ex_info.topic)
 
-            exam_list.append(exam_topic)
+            exam_list.append(exam_topic+'\n')
 
     # zwraca wartosc wszystkich indeksow z listy
 
     def return_all(list: list):
-        return '. '.join(map(str, list))
+        return ''.join(map(str, list))
 
     print(return_all(exam_list))
-    html_template = "<!DOCTYPE html> <html>\
-    <head><meta charset="+'"UTF-8">' + \
-        "</head>\
-            <body>" \
-                + return_all(exam_list) + "</body> \
-            </html>"
+    all_exams = return_all(exam_list)
 
-    web_doc = open('website.html', "w", encoding="utf-8")
-    web_doc.write(html_template)
+    exam_doc = open('exams.txt', "w", encoding="utf-8")
+    exam_doc.write(all_exams)
     await client.close()
 
 if __name__ == "__main__":

@@ -10,7 +10,8 @@ with open(r"C:\account.json") as f:
 # wczytywanie klucza ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
-
+def return_all(list: list):
+        return ''.join(map(str, list))
 
 async def main():
     # czysci terminal za kazdym razem
@@ -20,16 +21,24 @@ async def main():
     client = Vulcan(keystore, account)
     await client.select_student()
     # print(client.student.unit)
-    # ustala obecną i wczorajsza date
+    # ustala daty
     present = datetime.datetime.today()
     yesterday = present - datetime.timedelta(days=1)
+    twodago = present - datetime.timedelta(days=2)
 
     lessons_topics_list = []
+
     # pobiera frekwencję i przedmioty z dnia poprzedniego a następnie tematy lekcji
-    attendance = await client.data.get_attendance(date_from=yesterday)
+    attendance = await client.data.get_attendance(date_from=twodago)
     async for attend in attendance:
         lessons_topics_list.append(attend.topic)
         # print(attend.subject.name +' : ' + attend.topic)
+    lessons_doc = open('data/todays_lessons.txt', 'w', encoding="utf-8")
+    if(return_all(lessons_topics_list) != ""):
+        lessons_doc.write(return_all(lessons_topics_list)+'\n')
+        
+    else:
+        lessons_doc.write("Dzisiaj nie ma lekcji! Ciesz się dniem wolnym =)")
 
     # pobiera imie i nazwisko ucznia
     name = client.student.full_name
@@ -60,8 +69,7 @@ async def main():
 
     # zwraca wartosc wszystkich indeksow z listy
 
-    def return_all(list: list):
-        return ''.join(map(str, list))
+    
 
     print(return_all(exam_list))
     all_exams = return_all(exam_list)

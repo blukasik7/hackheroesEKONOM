@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+color 2
 cls
 
 echo ---------------------------------------------
@@ -77,6 +78,7 @@ if /i "%input3%"=="y" (
 	python.exe -m pip install --upgrade pip
 	pip install timedelta
     pip install vulcan-api
+	pip install -U g4f
 )
 if not "%input3%"=="y" (
 	echo Zaleznosci PIP nie zostana zainstalowane.

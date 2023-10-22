@@ -10,8 +10,11 @@ with open(r"C:\account.json") as f:
 # wczytywanie klucza ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
+
+
 def return_all(list: list):
-        return ''.join(map(str, list))
+    return ''.join(map(str, list))
+
 
 async def main():
     # czysci terminal za kazdym razem
@@ -29,14 +32,15 @@ async def main():
     lessons_topics_list = []
 
     # pobiera frekwencję i przedmioty z dnia poprzedniego a następnie tematy lekcji
-    attendance = await client.data.get_attendance(date_from=twodago)
+    attendance = await client.data.get_attendance(date_from=present)
     async for attend in attendance:
         lessons_topics_list.append(attend.topic)
         # print(attend.subject.name +' : ' + attend.topic)
     lessons_doc = open('data/todays_lessons.txt', 'w', encoding="utf-8")
-    if(return_all(lessons_topics_list) != ""):
+    if (return_all(lessons_topics_list) != ""):
         lessons_doc.write(return_all(lessons_topics_list)+'\n')
-        
+        lessons = (return_all(lessons_topics_list)+'\n')
+
     else:
         lessons_doc.write("Dzisiaj nie ma lekcji! Ciesz się dniem wolnym =)")
 
@@ -46,12 +50,7 @@ async def main():
     name_doc = open('data/name.txt', 'w', encoding="utf-8")
     name_doc.write(name)
     name_doc.close()
-    # próba odczytywania tematów lekcji z dnia poprzedniego
-    # lessons = await client.data.get_lessons(date_from=yesterday)
-    # async for lesson in lessons:
-    #
-    #   print(lesson.subject.name)
-    # pobiera info o sprawdzianach do zmiennej
+
     exam = await client.data.get_exams()
     # pusta lista na tematy sprawdzianów
     exam_list = []
@@ -67,16 +66,26 @@ async def main():
 
             exam_list.append(exam_topic+'\n')
 
-    # zwraca wartosc wszystkich indeksow z listy
-
-    
-
     print(return_all(exam_list))
     all_exams = return_all(exam_list)
 
     exam_doc = open('data/exams.txt', "w", encoding="utf-8")
     exam_doc.write(all_exams)
     exam_doc.close()
+
+    html_template = '<!DOCTYPE html>\
+                        <html>\
+                        <head>\
+                            <meta charset="utf-8">\
+                        </head>\
+                        <body>\
+                            <p>'+all_exams+'  </p>\
+                        </body>\
+                        </html>'
+
+    html = open('website.html', 'w', encoding="utf-8")
+    html.write(html_template)
+
     await client.close()
 
 

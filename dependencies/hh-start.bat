@@ -8,6 +8,7 @@ echo.
 echo        Zawiera:
 echo        - Python 3.12
 echo        - timedelta (Python (PIP^)^)
+echo        - vulcan-api (Python (PIP^)^)
 echo        - Node.js
 echo.
 echo        (C^) HHEkonom 2023 Jakub Namyslak
@@ -75,7 +76,7 @@ if /i "%input3%"=="y" (
 	pip install pip
 	python.exe -m pip install --upgrade pip
 	pip install timedelta
-	echo ---------------------------------------------
+    pip install vulcan-api
 )
 if not "%input3%"=="y" (
 	echo Zaleznosci PIP nie zostana zainstalowane.

@@ -37,9 +37,9 @@ button {
     font-size: 13pt;
     background-color: rgba(41, 31, 37, 1);
     color: white;
-    width: 200px;
+    width: 225px;
     height: 60px;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-bottom: 15px;
     cursor: pointer;
 }

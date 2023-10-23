@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color:white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('svg/bg-1.svg');
+   
+}
+fieldset {
+  border: none;
+}
+form {
+    background-color: white;
+    
+    border-radius: 10px;
+    width: 300px;
+}
+
+input {
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+    margin: 0px;
+    border: 2px solid rgb(175, 175, 175);
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+button {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 13pt;
+    background-color: rgba(41, 31, 37, 1);
+    color: white;
+    width: 200px;
+    height: 60px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+a {
+    color:white;
+}
+#token {
+    margin-top: 15px;
+}
+#pin {
+    margin-bottom: -15px;
+}
+.fx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.full {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.legend {
+  
+  font-size: 19pt;
+  margin-bottom: 50px;
+}
+.bgsvg {
+    aspect-ratio: 960/540;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('svg/bg-1.svg');
+    position: absolute;
+    z-index: -1;
+
+}
+.help {
+    margin-top: 20px;
+    cursor: pointer;
+}

@@ -4,26 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HackHeroes - FormTest</title>
-        <style>
-            .fieldset{
-                border: 6px green double;
-            }
-            .fx{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-            .full{
-                width: 100vw;
-                height: 100vh;
-                overflow: hidden;
-            }
-            .legend{
-                font-family: monospace;
-                font-size: 12pt;
-            }
-        </style>
+        
+          <link rel="stylesheet" href="style.css">
+        
 
         <!--Biblioteka FileWriter-->
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin = "anonymous" referrerpolicy = "no-referrer"> </script>
@@ -60,8 +43,11 @@
         </script>
     </head>
     <body class="full fx">
+        <div class="bgsvg"></div>
+        <br> 
+        <br>
         <fieldset class="fieldset">
-            <legend class="legend">Poświadczenia - Vulcan</legend>
+            <legend class="legend">Logowanie - Vulcan</legend>
             <form action="javascript:manageForm()" method="post" class="fx">
                 <input type="text" id="token" name="token" placeholder="Token" required maxlength="7"></input>
                 <br>
@@ -73,5 +59,7 @@
                 <button type="submit">Prześlij</button>
             </form>
         </fieldset>
+        <div class="help"><a href='instrukcja.html'>instrukcja</a></div>
+       
     </body>
 </html>

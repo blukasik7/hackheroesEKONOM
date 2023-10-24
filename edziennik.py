@@ -4,7 +4,7 @@ import vulcan
 import datetime
 import os
 import timedelta
-import g4f 
+import g4f
 # wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\account.json") as f:
     account = Account.load(f.read())
@@ -91,33 +91,38 @@ async def main():
     await client.close()
 
 
-   
-
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
-    
-     #GENEROWANIE NOTATEK
+
+    # GENEROWANIE NOTATEK
 
     _providers = [
         g4f.Provider.GptGo,
-        #g4f.Provider.You
+        # g4f.Provider.You
     ]
-
+    
     async def run_provider(provider: g4f.Provider.BaseProvider):
-        try:
-            response = await g4f.ChatCompletion.create_async(
-                model=g4f.models.gpt_35_turbo,
-                messages=[{"role": "user", "content": "Wygeneruj notatkę dzięki której uczeń przygotuje się na sprawdzian z tematu:" +  exam_list[0] + "."}],
-                provider=provider
-            )
-            print(response)
-        except Exception as e:
-            print(f"{provider.__name__}:", e)
+        for i in range (len(exam_list)):
+
+            try:
+                response = await g4f.ChatCompletion.create_async(
+                    model=g4f.models.gpt_35_turbo,
+                    messages=[
+                        {"role": "user", "content": "Wygeneruj notatkę dzięki której uczeń przygotuje się na sprawdzian z tematu:" + exam_list[i] + "."}],
+                    provider=provider
+                )
+                print(response)
+                with open(str(i)+'note.txt', 'w', encoding="utf-8") as plik:
+                    plik.write(str(response))
+            except Exception as e:
+                print(f"{provider.__name__}:", e)
+
     async def run_all():
         calls = [
             run_provider(provider) for provider in _providers
         ]
         await asyncio.gather(*calls)
-    
+
     asyncio.run(run_all())
+    print('___________________________________koniec__________________________________________________')

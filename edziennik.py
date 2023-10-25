@@ -5,6 +5,7 @@ import datetime
 import os
 import timedelta
 import g4f
+import os.path
 # wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
 with open(r"C:\account.json") as f:
     account = Account.load(f.read())
@@ -12,10 +13,27 @@ with open(r"C:\account.json") as f:
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
 
-
+def check_exist(file_name):
+    if os.path.exists(file_name):
+        return True;
+    else:
+        return False;
+    
 def return_all(list: list):
-    return ''.join(map(str, list))
-
+    return '\n'.join(map(str, list))
+def remove_special(string:str):
+    string = string.replace('"', '')
+    string = string.replace('/', "")
+    string = string.replace("!", "")
+    string = string.replace('*', "")
+    string = string.replace('%', "")
+    string = string.replace('(', "")
+    string = string.replace(')', "")
+    string = string.replace('^', "")
+    string = string.replace('#', "")
+    string = string.replace('$', "")
+    string = string.replace('@', "")
+    return string
 
 async def main():
     # czysci terminal za kazdym razem
@@ -65,8 +83,8 @@ async def main():
 
         if (present <= exam_deadline):
             exam_topic = str(ex_info.topic)
-
-            exam_list.append(exam_topic+'\n')
+            exam_topic = remove_special(exam_topic)
+            exam_list.append(exam_topic)
 
     print(return_all(exam_list))
     all_exams = return_all(exam_list)
@@ -104,19 +122,21 @@ if __name__ == "__main__":
     
     async def run_provider(provider: g4f.Provider.BaseProvider):
         for i in range (len(exam_list)):
-
-            try:
-                response = await g4f.ChatCompletion.create_async(
-                    model=g4f.models.gpt_35_turbo,
-                    messages=[
-                        {"role": "user", "content": "Wygeneruj notatkę dzięki której uczeń przygotuje się na sprawdzian z tematu:" + exam_list[i] + "."}],
-                    provider=provider
-                )
-                print(response)
-                with open(str(i)+'note.txt', 'w', encoding="utf-8") as plik:
-                    plik.write(str(response))
-            except Exception as e:
-                print(f"{provider.__name__}:", e)
+            if not(check_exist("notes/"+str(exam_list[i])+'.txt')):
+                try:
+                    response = await g4f.ChatCompletion.create_async(
+                        model=g4f.models.gpt_35_turbo,
+                        messages=[
+                            {"role": "user", "content": "Wygeneruj notatkę dzięki której uczeń przygotuje się na sprawdzian z tematu:" + exam_list[i] + "."}],
+                        provider=provider
+                    )
+                    print(response)
+                    with open("notes/"+str(exam_list[i])+'.txt', 'w', encoding="utf-8") as plik:
+                        plik.write(str(response))
+                except Exception as e:
+                    print(f"{provider.__name__}:", e)
+            else:
+                print("Notatka już istnieje!")
 
     async def run_all():
         calls = [

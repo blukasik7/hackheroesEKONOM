@@ -12,23 +12,23 @@ p{
 }
 #left_arrow{
     float: left;
-    width: 10%;
-    height: auto;
-    margin-left: 5%;
+    width: 5%;
+    height: 10%;
+    margin-left: 13%;
     rotate: 180deg;
-    margin-top: 10%;
+    margin-top: 13%;
 }
 #right_arrow{
     float: left;
-    width: 10%;
+    width: 5%;
     height: 10%;
-    margin-right: 5%;
-    margin-top: 10%;
+    margin-right: 13%;
+    margin-top: 13%;
 }
 main{
     float: left;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
     width: 60%;
     height: 500px;
     outline: 3px solid black;

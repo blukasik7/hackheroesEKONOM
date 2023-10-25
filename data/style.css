@@ -74,7 +74,7 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url('svg/bg-1.svg');
+    
     position: absolute;
     z-index: -1;
 

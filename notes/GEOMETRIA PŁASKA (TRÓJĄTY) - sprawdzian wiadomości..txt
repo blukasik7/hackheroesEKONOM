@@ -1,0 +1,42 @@
+Notatka do przygotowania się na sprawdzian z geometrii płaskiej (trójkąty):
+
+1. Definicje podstawowe:
+- Trójkąt - figura geometryczna składająca się z trzech boków i trzech wierzchołków.
+- Bok trójkąta - odcinek łączący dwa wierzchołki trójkąta.
+- Kąt trójkąta - obszar pomiędzy dwoma bokami trójkąta.
+- Wysokość trójkąta - odcinek łączący jedno z wierzchołków trójkąta z przeciwnym bokiem i prostopadły do tego boku.
+
+2. Klasyfikacja trójkątów:
+- Ze względu na długości boków:
+   a) Równoboczny - ma trzy równe boki.
+   b) Równoramienny - ma przynajmniej dwa równe boki.
+   c) Różnoboczny - ma trzy różne boki.
+- Ze względu na miary kątów:
+   a) Ostrokątny - ma trzy ostre kąty (mniejsze od 90 stopni).
+   b) Prostokątny - ma jeden kąt prosty (90 stopni).
+   c) Obtusowy - ma jeden tępy kąt (większy od 90 stopni).
+- Trójkąt równoramienny prostokątny - ma dwa kąty równe i jeden kąt równy 90 stopni.
+
+3. Własności trójkątów:
+- Suma miar kątów w trójkącie wynosi zawsze 180 stopni.
+- W trójkącie równoramiennym prostokątnym, suma miar kątów równa się 180 stopni.
+
+4. Twierdzenia dotyczące trójkątów:
+- Twierdzenie Pitagorasa - w trójkącie prostokątnym sumę kwadratów długości przyprostokątnych równa się kwadratowi długości przeciwprostokątnej.
+- Twierdzenie Talesa - jeśli dwie proste przecinają się dwiema równoległymi, to proporcje odcinków powstałych na jednej przekątnej są takie same.
+
+5. Obliczenia na trójkątach:
+- Obwód trójkąta - suma długości wszystkich boków.
+- Pole trójkąta - w zależności od dostępnych danych, można użyć wzoru: 1/2 * podstawa * wysokość, wzoru Herona lub wzoru z sinusem.
+
+6. Równania trójkąta:
+- Twierdzenie cosinusów - a^2 = b^2 + c^2 - 2bc * cos(α), gdzie a, b, c to długości boków, a α to miara kąta przeciwległego do boku a.
+- Twierdzenie sinusów - a/sin(α) = b/sin(β) = c/sin(γ), gdzie a, b, c to długości boków, a α, β, γ to miary kątów trójkąta.
+
+7. Zadania praktyczne:
+- Obliczenie obwodu i pola trójkąta na podstawie podanych długości boków.
+- Obliczenie miary kąta trójkąta na podstawie danych długości boków.
+- Obliczenie niewiadomej długości boku trójkąta na podstawie innych danych.
+- Sprawdzenie, czy dany trójkąt spełnia warunki trójkąta równoramiennego, równobocznego lub prostokątnego.
+
+Przygotowując się do sprawdzianu, zalecam powtórzenie definicji, własności, twierdzeń oraz umiejętność rozwiązywania zadań praktycznych dotyczących trójkątów. Warto również wykonać dodatkowe zadania i consultarepetytorium z zakresu geometrii płaskiej (trójkąty). Powodzenia!

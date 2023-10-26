@@ -13,27 +13,25 @@ with open(r"C:\account.json") as f:
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
 
+
 def check_exist(file_name):
     if os.path.exists(file_name):
-        return True;
+        return True
     else:
-        return False;
-    
+        return False
+
+
 def return_all(list: list):
     return '\n'.join(map(str, list))
-def remove_special(string:str):
-    string = string.replace('"', '')
-    string = string.replace('/', "")
-    string = string.replace("!", "")
-    string = string.replace('*', "")
-    string = string.replace('%', "")
-    string = string.replace('(', "")
-    string = string.replace(')', "")
-    string = string.replace('^', "")
-    string = string.replace('#', "")
-    string = string.replace('$', "")
-    string = string.replace('@', "")
+
+
+def remove_special(string: str):
+    specials_list = ['"', '#', '%', '&', '*', ':', '<', '>', '?']
+    for i in range(len(specials_list)):
+        string = string.replace(specials_list[i], "")
+
     return string
+
 
 async def main():
     # czysci terminal za kazdym razem
@@ -42,6 +40,7 @@ async def main():
     # tworzenie obiektu Vulcan
     client = Vulcan(keystore, account)
     await client.select_student()
+    student = await client.select_student()
     # print(client.student.unit)
     # ustala daty
     present = datetime.datetime.today()
@@ -50,18 +49,12 @@ async def main():
 
     lessons_topics_list = []
 
-    # pobiera frekwencję i przedmioty z dnia poprzedniego a następnie tematy lekcji
-    attendance = await client.data.get_attendance(date_from=present)
-    async for attend in attendance:
-        lessons_topics_list.append(attend.topic)
-        # print(attend.subject.name +' : ' + attend.topic)
-    lessons_doc = open('data/todays_lessons.txt', 'w', encoding="utf-8")
-    if (return_all(lessons_topics_list) != ""):
-        lessons_doc.write(return_all(lessons_topics_list)+'\n')
-        lessons = (return_all(lessons_topics_list)+'\n')
-
-    else:
-        lessons_doc.write("Dzisiaj nie ma lekcji! Ciesz się dniem wolnym =)")
+    # attendance = await client.data.get_attendance();
+    # async for attend in attendance:
+    #    print(attend.topic)
+    lessons = await client.data.get_lessons(date_from=yesterday, date_to=yesterday)
+    async for lesson in lessons:
+        print(lesson.subject)
 
     # pobiera imie i nazwisko ucznia
     name = client.student.full_name
@@ -119,10 +112,10 @@ if __name__ == "__main__":
         g4f.Provider.GptGo,
         # g4f.Provider.You
     ]
-    
+
     async def run_provider(provider: g4f.Provider.BaseProvider):
-        for i in range (len(exam_list)):
-            if not(check_exist("notes/"+str(exam_list[i])+'.txt')):
+        for i in range(len(exam_list)):
+            if not (check_exist("notes/"+str(exam_list[i])+'.txt')):
                 try:
                     response = await g4f.ChatCompletion.create_async(
                         model=g4f.models.gpt_35_turbo,

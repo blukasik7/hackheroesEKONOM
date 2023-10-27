@@ -1,65 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HackHeroes - FormTest</title>
-        
-          <link rel="stylesheet" href="style.css">
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HackHeroes - Logowanie</title>
 
-        <!--Biblioteka FileWriter-->
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin = "anonymous" referrerpolicy = "no-referrer"> </script>
-        <script type="text/javascript">
-            function manageForm(){
-                try{
-                    let extractedData = '';
-                    let ids = ['token', 'symbol', 'pin'];
+    <link rel="stylesheet" href="style.css" />
 
-                    //Uzyskaj i przeformatuj dane z formularza
-                    for(let i = 0; i < ids.length; i++){
-                        let delimiter = '\n';
-                        if(i + 1 == ids.length){
-                            delimiter = '';
-                        }  
-                        extractedData += document.getElementById(ids[i]).value + delimiter;
-                    }
+    <!--Biblioteka FileWriter-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+      integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript">
+      function manageForm() {
+        try {
+          let extractedData = "";
+          let ids = ["token", "symbol", "pin"];
 
-                    //Sprawdź zawartość bez zapisywania pliku
-                    console.log(extractedData);
-
-                    //Stwórz plik.
-                    var tekst = new Blob([extractedData], {
-                        type: "text/plain;charset=utf-8",
-                    });
-
-                    //Zapisz plik
-                    saveAs(tekst, "uonet_pass.txt");
-                }
-                catch(error){
-                    console.error('Wystąpił błąd: ' + error);
-                }
+          //Uzyskaj i przeformatuj dane z formularza
+          for (let i = 0; i < ids.length; i++) {
+            let delimiter = "\n";
+            if (i + 1 == ids.length) {
+              delimiter = "";
             }
-        </script>
-    </head>
-    <body class="full fx">
-        <div class="bgsvg"></div>
-        <br> 
-        <br>
-        <fieldset class="fieldset">
-            <legend class="legend">Logowanie - Vulcan</legend>
-            <form action="javascript:manageForm()" method="post" class="fx">
-                <input type="text" id="token" name="token" placeholder="Token" required maxlength="7"></input>
-                <br>
-                <input type="text" id="symbol" name="symbol" placeholder="Symbol" value="opole" required></input>
-                <br>
-                <input type="text" id="pin" name="pin" placeholder="PIN" maxlength="6" required></input>
-                <br>
-                <br>
-                <button type="submit">Prześlij</button>
-            </form>
-        </fieldset>
-        <div class="help"><a href='instrukcja.html'>instrukcja</a></div>
-       
-    </body>
+            extractedData += document.getElementById(ids[i]).value + delimiter;
+          }
+
+          //Sprawdź zawartość bez zapisywania pliku
+          console.log(extractedData);
+
+          //Stwórz plik.
+          var tekst = new Blob([extractedData], {
+            type: "text/plain;charset=utf-8",
+          });
+
+          //Zapisz plik
+          saveAs(tekst, "uonet_pass.txt");
+        } catch (error) {
+          console.error("Wystąpił błąd: " + error);
+        }
+      }
+    </script>
+  </head>
+  <body class="full fx">
+    <div class="bgsvg"></div>
+    <br />
+    <br />
+    <fieldset class="fieldset">
+      <legend class="legend">Logowanie - Vulcan</legend>
+      <form action="javascript:manageForm()" method="post" class="fx">
+        <input
+          type="text"
+          id="token"
+          name="token"
+          placeholder="Token"
+          required
+          maxlength="7"
+        />
+        <br />
+        <input
+          type="text"
+          id="symbol"
+          name="symbol"
+          placeholder="Symbol"
+          value="opole"
+          required
+        />
+        <br />
+        <input
+          type="text"
+          id="pin"
+          name="pin"
+          placeholder="PIN"
+          maxlength="6"
+          required
+        />
+        <br />
+        <br />
+        <button type="submit">Prześlij</button>
+      </form>
+    </fieldset>
+    <div class="help">
+      <a href="instrukcja.html" target="_blank">instrukcja</a>
+    </div>
+  </body>
 </html>

@@ -10,35 +10,24 @@
     <br />
     <div id="left_arrow"><img src="arrow.png" alt="arrow" /></div>
     <main>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
+      <object
+        data="notes/Metody zarządzania projektami.html"
+        style="width: 100%; height: 100%"
+        
+      </object>
     </main>
 
     <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div>
     <div id="circles_div"></div>
     <script>
-      // Określ liczbę kolek
-      const numberOfCircles = 5;
-
-      // Pobierz kontener na kolek
-      const circlesContainer = document.getElementById("circles_div");
-
-      // Utwórz kolek i dodaj je do kontenera
-      for (let i = 0; i < numberOfCircles; i++) {
-        const circle = document.createElement("div");
-        circle.style.display = "inline-block";
-        circle.className = "circle";
-        circle.style.backgroundColor = "rgb(255,255,255)"; // Ustaw kolor koła
-        circle.addEventListener("click", () => {
-          // Ustaw wybrane koło na kliknięte
-          alert("Kliknieto kolko " + (i + 1));
-        });
-        circlesContainer.appendChild(circle);
+      function CircleFunction() {}
+      var NumberOfCircles = 4;
+      var circles_div = document.getElementById("circles_div");
+      for (let i = 0; i < NumberOfCircles + 1; i++) {
+        circles_div.innerHTML += '<div class="circle"></div>';
+        document
+          .getElementsByClassName("circle")
+          .addEventListener("click", CircleFunction);
       }
     </script>
   </body>

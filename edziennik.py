@@ -57,11 +57,11 @@ async def main():
         print(lesson.subject)
 
     # pobiera imie i nazwisko ucznia
-    name = client.student.full_name
-    print(name)
-    name_doc = open('data/name.txt', 'w', encoding="utf-8")
-    name_doc.write(name)
-    name_doc.close()
+    # name = client.student.full_name
+    # print(name)
+    # name_doc = open('data/name.txt', 'w', encoding="utf-8")
+    # name_doc.write(name)
+    # name_doc.close()
 
     exam = await client.data.get_exams()
     # pusta lista na tematy sprawdzianów
@@ -86,18 +86,18 @@ async def main():
     exam_doc.write(all_exams)
     exam_doc.close()
 
-    html_template = '<!DOCTYPE html>\
-                        <html>\
-                        <head>\
-                            <meta charset="utf-8">\
-                        </head>\
-                        <body>\
-                            <p>'+all_exams+'  </p>\
-                        </body>\
-                        </html>'
+    # html_template = '<!DOCTYPE html>\
+    #                    <html>\
+    #                    <head>\
+    #                        <meta charset="utf-8">\
+    #                    </head>\
+    #                    <body>\
+    #                        <p>'+all_exams+'  </p>\
+    #                    </body>\
+    #                    </html>'
 
-    html = open('website.html', 'w', encoding="utf-8")
-    html.write(html_template)
+    # html = open('website.html', 'w', encoding="utf-8")
+    # html.write(html_template)
 
     await client.close()
 
@@ -115,7 +115,11 @@ if __name__ == "__main__":
 
     async def run_provider(provider: g4f.Provider.BaseProvider):
         for i in range(len(exam_list)):
-            if not (check_exist("notes/"+str(exam_list[i])+'.txt')):
+            def replace_empty_lines(text: str):
+
+                text = text.replace('\n', '<br>')
+
+            if not (check_exist("notes/"+str(exam_list[i])+'.html')):
                 try:
                     response = await g4f.ChatCompletion.create_async(
                         model=g4f.models.gpt_35_turbo,
@@ -124,8 +128,10 @@ if __name__ == "__main__":
                         provider=provider
                     )
                     print(response)
-                    with open("notes/"+str(exam_list[i])+'.txt', 'w', encoding="utf-8") as plik:
-                        plik.write(str(response))
+                    with open("notes/"+str(exam_list[i])+'.html', 'w', encoding="utf-8") as plik:
+
+                        plik.write(
+                            '<!DOCTYPE html><html><head><meta charset="utf-8"><link rel = "stylesheet" href="notes.css"></head><body>'+replace_empty_lines(str(response))+'</body></html>')
                 except Exception as e:
                     print(f"{provider.__name__}:", e)
             else:

@@ -22,23 +22,12 @@
     <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div>
     <div id="circles_div"></div>
     <script>
-      // Określ liczbę kolek
-      const numberOfCircles = 5;
-
-      // Pobierz kontener na kolek
+      // dodaj ilość kółek przez Pythona lub cos innego
+      const circlesAmount = 9;
       const circlesContainer = document.getElementById("circles_div");
 
-      // Utwórz kolek i dodaj je do kontenera
-      for (let i = 0; i < numberOfCircles; i++) {
-        const circle = document.createElement("div");
-        circle.style.display = "inline-block";
-        circle.className = "circle";
-        circle.style.backgroundColor = "rgb(255,255,255)"; // Ustaw kolor koła
-        circle.addEventListener("click", () => {
-          // Ustaw wybrane koło na kliknięte
-          alert("Kliknieto kolko " + (i + 1));
-        });
-        circlesContainer.appendChild(circle);
+      for(let i = 0; i < circlesAmount; i++){
+        circlesContainer.innerHTML += "<div class='circle circle-2 circle-trans'></div>";
       }
     </script>
   </body>

@@ -65,12 +65,10 @@ img {
   margin: 20px;
   cursor: pointer;
   display: inline-block;
-}
-/* 10/28/2023 - jakubekgranie */
-.circle-2{
   background-color: white;
 }
-.circle-2:hover{
+/* 10/28/2023 - jakubekgranie */
+.circle:hover{
   background-color: #7C719A;
 }
 .circle-trans{

@@ -58,7 +58,7 @@ img {
   margin-top: 10px;
   width: 2%;
 }
-.circle {
+#circles_div > div {
   display: inline-block;
   width: 20px;
   height: 20px;

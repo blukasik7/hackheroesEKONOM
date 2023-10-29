@@ -25,12 +25,28 @@ def return_all(list: list):
     return '\n'.join(map(str, list))
 
 
-def remove_special(string: str):
+def remove_special(string):
     specials_list = ['"', '#', '%', '&', '*', ':', '<', '>', '?']
     for i in range(len(specials_list)):
         string = string.replace(specials_list[i], "")
 
-    return string
+    return str(string)
+
+
+def generate_objects(list):
+    obj_sum = ""
+    for i in range(len(list)):
+
+        path = exam_list[i]+'''.html'''
+        obj = '''<object
+            data="notes/'''+str(path)+'''"
+            style="width: 100%; height: 100%;display:none"
+             id='''+chr(65+i)+'''
+            >
+            </object>'''
+
+        obj_sum += str(obj)
+    return str(obj_sum)
 
 
 async def main():
@@ -115,9 +131,9 @@ if __name__ == "__main__":
 
     async def run_provider(provider: g4f.Provider.BaseProvider):
         for i in range(len(exam_list)):
-            def replace_empty_lines(text: str):
-
+            def replace_empty_lines(text):
                 text = text.replace('\n', '<br>')
+                return str(text)
 
             if not (check_exist("notes/"+str(exam_list[i])+'.html')):
                 try:
@@ -132,10 +148,14 @@ if __name__ == "__main__":
 
                         plik.write(
                             '<!DOCTYPE html><html><head><meta charset="utf-8"><link rel = "stylesheet" href="notes.css"></head><body>'+replace_empty_lines(str(response))+'</body></html>')
+
                 except Exception as e:
                     print(f"{provider.__name__}:", e)
             else:
                 print("Notatka już istnieje!")
+        with open('website2.html', 'w', encoding="utf-8") as website:
+            website.write('''<!DOCTYPE html><html><head><meta charset="utf-8" /><link href="styl.css" type="text/css" rel="stylesheet" /></head><body><h1 lass="przedmiot">Podstawy przedsiębiorczości</h1><p>od str. 30, gospodarowanie , rynek, pieniądz. 24.10.2023</p><br /><div id="left_arrow"><img src="arrow.png" alt="arrow" /></div><main>'''+generate_objects(exam_list) +
+                          '''</main><div id="right_arrow"><img src="arrow.png" alt="arrow" /></div><div id="circles_div"></div><script>var ilosc_plikow = '''+str(len(exam_list))+'''; function CircleFunction() {}var NumberOfCircles = 4;var circles_div = document.getElementById("circles_div");for (let i = 0; i < NumberOfCircles + 1; i++) {circles_div.innerHTML += '<div class="circle"></div>';document.getElementsByClassName("circle").addEventListener("click", CircleFunction);}</script></body></html>''')
 
     async def run_all():
         calls = [

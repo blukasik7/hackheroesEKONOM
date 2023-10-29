@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="styl.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 lass="przedmiot">Podstawy przedsiębiorczości</h1>
+    <p>od str. 30, gospodarowanie , rynek, pieniądz. 24.10.2023</p>
+    <br />
+    <div id="left_arrow"><img src="arrow.png" alt="arrow" /></div>
+    <main>
+      <object
+        data="notes/od str. 30, gospodarowanie , rynek, pieniądz..html"
+        style="width: 100%; height: 100%; display: none"
+        id="A"
+      ></object
+      ><object
+        data="notes/DZial 2. slowka, pytania. Poprawa za tydzien.html"
+        style="width: 100%; height: 100%; display: none"
+        id="B"
+      >
+        id="B" ></object
+      ><object
+        data="notes/II termin wypracowania.html"
+        style="width: 100%; height: 100%; display: none"
+        id="C"
+      ></object
+      ><object
+        data="notes/II termin Makbet.html"
+        style="width: 100%; height: 100%; display: none"
+        id="D"
+      ></object
+      ><object
+        data="notes/Metody zarządzania projektami.html"
+        style="width: 100%; height: 100%; display: none"
+        id="E"
+      ></object
+      ><object
+        data="notes/GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa.html"
+        style="width: 100%; height: 100%; display: none"
+        id="F"
+      ></object>
+    </main>
+    <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div>
+    <div id="circles_div"></div>
+    <script>
+      var ilosc_plikow = 6;
+      ids = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K"];
+      function CircleFunction() {
+        console.log("Wywolales funkcje");
+        console.log(this.name);
+
+        element = document.getElementById(ids[this.name]);
+        element.style.display = "block";
+        for (var i = 0; i < ilosc_plikow; i++) {
+          if (i != this.name) {
+            previous = document.getElementById(ids[i]);
+            previous.style.display = "none";
+          }
+        }
+      }
+      var NumberOfCircles = 4;
+      var circles_div = document.getElementById("circles_div");
+
+      for (let i = 0; i < NumberOfCircles; i++) {
+        //circles_div.innerHTML += '<div id="circle' + i.toString() + '" ></div>';
+        const circle = document.createElement("div");
+        circle.setAttribute("id", "circle" + i.toString() + "");
+        circles_div.appendChild(circle);
+        circle.addEventListener("click", CircleFunction, false);
+        circle.name = i;
+      }
+    </script>
+  </body>
+</html>

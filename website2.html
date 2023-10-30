@@ -45,45 +45,69 @@
     <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div>
     <div id="circles_div"></div>
     <script>
+      //Określa ilość notatek
       var ilosc_plikow = 6;
-      var NumberOfCircles = 4;
+      //Ilość wyświetlanych kółek
+      var NumberOfCircles = ilosc_plikow;
+      //Div, w którym znajdują się kółka
       var circles_div = document.getElementById("circles_div");
+      //Działanie strzałek
+      r_arrow = document.getElementById("right_arrow");
+      l_arrow = document.getElementById("left_arrow");
 
+      r_arrow.addEventListener("click", r_arrow_click, false);
+      l_arrow.addEventListener("click", l_arrow_click, false);
+      function r_arrow_click() {
+        console.log("Nacisnąłeś prawą strzałkę");
+      }
+      function l_arrow_click() {
+        console.log("Nacisnąłeś lewą strzałkę");
+      }
       for (let i = 0; i < NumberOfCircles; i++) {
         //circles_div.innerHTML += '<div id="circle' + i.toString() + '" ></div>';
         const circle = document.createElement("div");
         circle.setAttribute("id", "circle" + i.toString() + "");
+        //Dodawanie kółka do diva, w którym ma się znaleźć
         circles_div.appendChild(circle);
+        //Po kliknięciu na kółko zostaje wywołana odpoowiednia funkcja.
         circle.addEventListener("click", CircleFunction, false);
         circle.name = i;
       }
+      //Tablica zawierająca ID <object> - ów.
+      ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
 
-      ids = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K"];
-
+      //Wyswietlanie pierwszej notatki odrazu po wejsciu na strone
       function display_first() {
         element = document.getElementById(ids[0]);
         element.style.display = "block";
         first_circle = document.getElementById("circle0");
         first_circle.style.background = "black";
       }
-      //Wyswietlanie pierwszej notatki odrazu po wejsciu na strone
+
       display_first();
 
+      //Funkcja wywoływana po naciśnięciu na kółko
       function CircleFunction() {
-        console.log("Wywolales funkcje");
-        console.log(this.name);
+        console.log(
+          "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +
+            this.name
+        );
 
+        //Znajdowanie odpowiedniego <object> i zmiana jego wyswietalnia na "block" tak, aby pojawił się na ekranie (zamienia z none).
         element = document.getElementById(ids[this.name]);
         element.style.display = "block";
-
+        //Znajdowanie elementów: div-a z kółkami i kółka w tym divie.
         var div = document.getElementById("circles_div");
-
         var kolka = div.getElementsByTagName("div");
+        //Zamiana wszystkich kółek na białe.
         for (var i = 0; i < kolka.length; i++) {
           kolka[i].style.background = "white";
         }
+        //Kółko które wywołało funkcję (zostało naciśnięte) zostaje pomalowane na inny kolor, tak aby było widać na której notatce się znajdujemy.
         this.style.background = "black";
-        for (var i = 0; i < ilosc_plikow; i++) {
+        //Wyłączanie innych notatek.
+        for (var i = 0; i < ilosc_plikow + 1; i++) {
+          //Jeżeli ID sprawdzanej notatki odpowiada naciśniętemu kółkowi, nie wykonuj pętli.
           if (i != this.name) {
             previous = document.getElementById(ids[i]);
             previous.style.display = "none";

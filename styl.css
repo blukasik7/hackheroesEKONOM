@@ -11,6 +11,7 @@ body {
 }
 .przedmiot {
   color: white;
+  margin-top:90px;
 }
 p {
   color: white;
@@ -36,7 +37,7 @@ main {
   margin-left: 2%;
   margin-right: 2%;
   width: 55%;
-  height: 500px;
+  height: 550px;
 
   background-color: white;
   color: black;
@@ -49,7 +50,7 @@ img {
   height: auto;
 }
 #circles_div {
-  height: 150px;
+  height: 50px;
   float: left;
   text-align: center;
   width: 100%;

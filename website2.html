@@ -5,7 +5,7 @@
     <link href="styl.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <h1 lass="przedmiot">Podstawy przedsiębiorczości</h1>
+    <h1 class="przedmiot">Podstawy przedsiębiorczości</h1>
     <p>od str. 30, gospodarowanie , rynek, pieniądz. 24.10.2023</p>
     <br />
     <div id="left_arrow"><img src="arrow.png" alt="arrow" /></div>
@@ -46,20 +46,6 @@
     <div id="circles_div"></div>
     <script>
       var ilosc_plikow = 6;
-      ids = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K"];
-      function CircleFunction() {
-        console.log("Wywolales funkcje");
-        console.log(this.name);
-
-        element = document.getElementById(ids[this.name]);
-        element.style.display = "block";
-        for (var i = 0; i < ilosc_plikow; i++) {
-          if (i != this.name) {
-            previous = document.getElementById(ids[i]);
-            previous.style.display = "none";
-          }
-        }
-      }
       var NumberOfCircles = 4;
       var circles_div = document.getElementById("circles_div");
 
@@ -70,6 +56,39 @@
         circles_div.appendChild(circle);
         circle.addEventListener("click", CircleFunction, false);
         circle.name = i;
+      }
+
+      ids = ["A", "B", "C", "D", "F", "G", "H", "I", "J", "K"];
+
+      function display_first() {
+        element = document.getElementById(ids[0]);
+        element.style.display = "block";
+        first_circle = document.getElementById("circle0");
+        first_circle.style.background = "black";
+      }
+      //Wyswietlanie pierwszej notatki odrazu po wejsciu na strone
+      display_first();
+
+      function CircleFunction() {
+        console.log("Wywolales funkcje");
+        console.log(this.name);
+
+        element = document.getElementById(ids[this.name]);
+        element.style.display = "block";
+
+        var div = document.getElementById("circles_div");
+
+        var kolka = div.getElementsByTagName("div");
+        for (var i = 0; i < kolka.length; i++) {
+          kolka[i].style.background = "white";
+        }
+        this.style.background = "black";
+        for (var i = 0; i < ilosc_plikow; i++) {
+          if (i != this.name) {
+            previous = document.getElementById(ids[i]);
+            previous.style.display = "none";
+          }
+        }
       }
     </script>
   </body>

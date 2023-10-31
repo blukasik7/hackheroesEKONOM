@@ -51,6 +51,8 @@
       var NumberOfCircles = ilosc_plikow;
       //Div, w którym znajdują się kółka
       var circles_div = document.getElementById("circles_div");
+      //aktualna karta
+      var currentCard = 0;
       //Działanie strzałek
       r_arrow = document.getElementById("right_arrow");
       l_arrow = document.getElementById("left_arrow");
@@ -59,9 +61,33 @@
       l_arrow.addEventListener("click", l_arrow_click, false);
       function r_arrow_click() {
         console.log("Nacisnąłeś prawą strzałkę");
+        if(currentCard+1<ilosc_plikow){
+          //zmienia kolory kółek
+          var div = document.getElementById("circles_div");
+          var kolka = div.getElementsByTagName("div");
+          kolka[currentCard].style.background="white";
+          kolka[currentCard+1].style.background="black";
+          //ukrywa poprzednią notatkę
+          document.getElementById(ids[currentCard]).style.display="none";
+          //pokazuja aktualną notatkę
+          document.getElementById(ids[currentCard+1]).style.display="block";
+          currentCard++;
+        }
       }
       function l_arrow_click() {
         console.log("Nacisnąłeś lewą strzałkę");
+        if(currentCard>0){
+          //zmienia kolory kółek
+          var div = document.getElementById("circles_div");
+          var kolka = div.getElementsByTagName("div");
+          kolka[currentCard].style.background="white";
+          kolka[currentCard-1].style.background="black";
+          //ukrywa poprzednią notatkę
+          document.getElementById(ids[currentCard]).style.display="none";
+          //pokazuja aktualną notatkę
+          document.getElementById(ids[currentCard-1]).style.display="block";
+          currentCard--;
+        }
       }
       for (let i = 0; i < NumberOfCircles; i++) {
         //circles_div.innerHTML += '<div id="circle' + i.toString() + '" ></div>';
@@ -92,6 +118,9 @@
           "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +
             this.name
         );
+
+        //zmiana numeru aktualnej karty
+        currentCard=this.name;
 
         //Znajdowanie odpowiedniego <object> i zmiana jego wyswietalnia na "block" tak, aby pojawił się na ekranie (zamienia z none).
         element = document.getElementById(ids[this.name]);

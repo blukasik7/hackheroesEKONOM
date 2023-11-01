@@ -80,18 +80,26 @@ async def main():
     yesterday = present - datetime.timedelta(days=1)
     twodago = present - datetime.timedelta(days=2)
 
+    lucky_number = await client.data.get_lucky_number(present)
+    if(lucky_number.number != 0):
+        print("Dzisiejszy szczęśliwy numerek to: " + str(lucky_number.number)+"\n")
+    
+    else:
+    
+        print("Dzisiaj nie ma szczęśliwego numerka \n")
+    
     lessons_topics_list = []
 
     # attendance = await client.data.get_attendance();
     # async for attend in attendance:
     #    print(attend.topic)
-    lessons = await client.data.get_lessons(date_from=yesterday, date_to=yesterday)
-    async for lesson in lessons:
-        print(lesson.subject)
+    #lessons = await client.data.get_lessons(date_from=yesterday, date_to=yesterday)
+    #async for lesson in lessons:
+    #    print(lesson.subject)
 
-    # pobiera imie i nazwisko ucznia
-    # name = client.student.full_name
-    # print(name)
+
+    name = client.student.full_name
+    print(name)
     # name_doc = open('data/name.txt', 'w', encoding="utf-8")
     # name_doc.write(name)
     # name_doc.close()
@@ -171,7 +179,7 @@ if __name__ == "__main__":
             else:
                 print("Notatka już istnieje!")
         with open('website2.html', 'w', encoding="utf-8") as website:
-            website.write('''<!DOCTYPE html> <html> <head> <meta charset="utf-8" /> <link href="styl.css" type="text/css" rel="stylesheet" /> </head> <body> <h1 class="przedmiot">Podstawy przedsiębiorczości</h1>'''+generate_topic_paragraph(exam_list)+''' <br /> <div id="left_arrow"><img src="arrow.png" alt="arrow" /></div> <main>'''+generate_objects(exam_list)+''' </main> <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div> <div id="circles_div"></div> <script> var ilosc_plikow = 6; var NumberOfCircles = ilosc_plikow; var circles_div = document.getElementById("circles_div"); var currentCard = 0; r_arrow = document.getElementById("right_arrow"); l_arrow = document.getElementById("left_arrow"); r_arrow.addEventListener("click", r_arrow_click, false); l_arrow.addEventListener("click", l_arrow_click, false); function r_arrow_click() { console.log("Nacisnąłeś prawą strzałkę"); if (currentCard + 1 < ilosc_plikow) { var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); kolka[currentCard].style.background = "white"; kolka[currentCard + 1].style.background = "black"; document.getElementById(ids[currentCard]).style.display = "none"; document.getElementById(ids[currentCard + 1]).style.display = "block"; for (var i = 0; i < ilosc_plikow + 1; i++) { if ((previous_paragraph = document.getElementById(p_ids[i]))) { previous_paragraph.style.display = "none"; } } current_paragraph = document.getElementById(p_ids[currentCard + 1]); current_paragraph.style.display = "block"; currentCard++; } } function l_arrow_click() { console.log("Nacisnąłeś lewą strzałkę"); if (currentCard > 0) { var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); kolka[currentCard].style.background = "white"; kolka[currentCard - 1].style.background = "black"; document.getElementById(ids[currentCard]).style.display = "none"; document.getElementById(ids[currentCard - 1]).style.display = "block"; for (var i = 0; i < ilosc_plikow + 1; i++) { if ((previous_paragraph = document.getElementById(p_ids[i]))) { previous_paragraph.style.display = "none"; } } current_paragraph = document.getElementById(p_ids[currentCard - 1]); current_paragraph.style.display = "block"; currentCard--; } } for (let i = 0; i < NumberOfCircles; i++) { const circle = document.createElement("div"); circle.setAttribute("id", "circle" + i.toString() + ""); circles_div.appendChild(circle); circle.addEventListener("click", CircleFunction, false); circle.name = i; } ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]; p_ids = [ "pierwszy", "drugi", "trzeci", "czwarty", "piaty", "szosty", "siodmy", "osmy", ]; function display_first() { element = document.getElementById(ids[0]); element.style.display = "block"; first_circle = document.getElementById("circle0"); first_circle.style.background = "black"; } display_first(); function CircleFunction() { current_paragraph = document.getElementById(p_ids[this.name]); current_paragraph.style.display = "block"; console.log( "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " + this.name ); currentCard = this.name; element = document.getElementById(ids[this.name]); element.style.display = "block"; var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); for (var i = 0; i < kolka.length; i++) { kolka[i].style.background = "white"; } this.style.background = "black"; for (var i = 0; i < ilosc_plikow + 1; i++) { if (i != this.name) { previous = document.getElementById(ids[i]); other_paragraphs = document.getElementById(p_ids[i]); other_paragraphs.style.display = "none"; previous.style.display = "none"; } } } </script> </body> </html> ''')
+            website.write('''<!DOCTYPE html> <html> <head> <title> Tytuł strony </title><meta charset="utf-8" /> <link href="styl.css" type="text/css" rel="stylesheet" /> </head> <body> <h1 class="przedmiot">Podstawy przedsiębiorczości</h1>'''+generate_topic_paragraph(exam_list)+''' <br /> <div id="left_arrow"><img src="arrow.png" alt="arrow" /></div> <main>'''+generate_objects(exam_list)+''' </main> <div id="right_arrow"><img src="arrow.png" alt="arrow" /></div> <div id="circles_div"></div> <script> var ilosc_plikow = 6; var NumberOfCircles = ilosc_plikow; var circles_div = document.getElementById("circles_div"); var currentCard = 0; r_arrow = document.getElementById("right_arrow"); l_arrow = document.getElementById("left_arrow"); r_arrow.addEventListener("click", r_arrow_click, false); l_arrow.addEventListener("click", l_arrow_click, false); function r_arrow_click() { console.log("Nacisnąłeś prawą strzałkę"); if (currentCard + 1 < ilosc_plikow) { var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); kolka[currentCard].style.background = "white"; kolka[currentCard + 1].style.background = "black"; document.getElementById(ids[currentCard]).style.display = "none"; document.getElementById(ids[currentCard + 1]).style.display = "block"; for (var i = 0; i < ilosc_plikow + 1; i++) { if ((previous_paragraph = document.getElementById(p_ids[i]))) { previous_paragraph.style.display = "none"; } } current_paragraph = document.getElementById(p_ids[currentCard + 1]); current_paragraph.style.display = "block"; currentCard++; } } function l_arrow_click() { console.log("Nacisnąłeś lewą strzałkę"); if (currentCard > 0) { var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); kolka[currentCard].style.background = "white"; kolka[currentCard - 1].style.background = "black"; document.getElementById(ids[currentCard]).style.display = "none"; document.getElementById(ids[currentCard - 1]).style.display = "block"; for (var i = 0; i < ilosc_plikow + 1; i++) { if ((previous_paragraph = document.getElementById(p_ids[i]))) { previous_paragraph.style.display = "none"; } } current_paragraph = document.getElementById(p_ids[currentCard - 1]); current_paragraph.style.display = "block"; currentCard--; } } for (let i = 0; i < NumberOfCircles; i++) { const circle = document.createElement("div"); circle.setAttribute("id", "circle" + i.toString() + ""); circles_div.appendChild(circle); circle.addEventListener("click", CircleFunction, false); circle.name = i; } ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]; p_ids = [ "pierwszy", "drugi", "trzeci", "czwarty", "piaty", "szosty", "siodmy", "osmy", ]; function display_first() { element = document.getElementById(ids[0]); element.style.display = "block"; first_circle = document.getElementById("circle0"); first_circle.style.background = "black"; document.getElementById(p_ids[0]).style.display = "block";} display_first(); function CircleFunction() { current_paragraph = document.getElementById(p_ids[this.name]); current_paragraph.style.display = "block"; console.log( "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " + this.name ); currentCard = this.name; element = document.getElementById(ids[this.name]); element.style.display = "block"; var div = document.getElementById("circles_div"); var kolka = div.getElementsByTagName("div"); for (var i = 0; i < kolka.length; i++) { kolka[i].style.background = "white"; } this.style.background = "black"; for (var i = 0; i < ilosc_plikow + 1; i++) { if (i != this.name) { previous = document.getElementById(ids[i]); other_paragraphs = document.getElementById(p_ids[i]); other_paragraphs.style.display = "none"; previous.style.display = "none"; } } } </script> </body> </html> ''')
     async def run_all():
         calls = [
             run_provider(provider) for provider in _providers
@@ -179,4 +187,5 @@ if __name__ == "__main__":
         await asyncio.gather(*calls)
 
     asyncio.run(run_all())
+    os.system(f'start website2.html')
     print('___________________________________koniec__________________________________________________')

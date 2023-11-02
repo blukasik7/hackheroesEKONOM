@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r"
+   sodipodi:docname="alert-bell.svg">
+  <title
+     id="title17">Alert bell</title>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="923.87527"
+     inkscape:cy="926.12367"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Alert bell</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Sergio Luiz Araujo Silva</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>bell</rdf:li>
+            <rdf:li>notification</rdf:li>
+            <rdf:li>alert</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>a simple bell </dc:description>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.89133859;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="M 203.56641 68.4375 A 7.250838 7.250838 0 0 0 199.02539 69.880859 C 163.24359 95.885804 140.45563 136.08985 136.52734 180.14844 C 132.59905 224.20695 147.91848 267.82689 178.53516 299.75195 A 7.250838 7.250838 0 1 0 188.99609 289.72461 C 161.27272 260.81655 147.41172 221.3422 150.96875 181.44727 C 154.52578 141.55233 175.14468 105.15863 207.54492 81.611328 A 7.250838 7.250838 0 0 0 203.56641 68.4375 z M 609.07031 68.4375 A 7.250838 7.250838 0 0 0 605.0918 81.611328 C 637.49202 105.15863 658.11094 141.55233 661.66797 181.44727 C 665.225 221.3422 651.36399 260.81655 623.64062 289.72461 A 7.250838 7.250838 0 1 0 634.10156 299.75195 C 664.71823 267.82689 680.03766 224.20695 676.10938 180.14844 C 672.18109 136.08985 649.3931 95.885804 613.61133 69.880859 A 7.250838 7.250838 0 0 0 609.07031 68.4375 z M 406.23242 92.642578 C 399.54829 92.642578 394.06055 98.132239 394.06055 104.81641 C 394.06055 105.54223 394.13585 106.24927 394.25977 106.94141 C 369.13967 114.58744 356.05661 142.76028 354.04492 170.54297 C 348.4383 209.24749 332.38736 228.1336 317.0918 246.07617 C 296.26947 262.7545 307.51545 279.39638 321.43945 278.68164 C 349.71485 280.46349 377.92479 280.58375 406.31836 280.34961 C 434.71206 280.58375 462.92202 280.4635 491.19727 278.68164 C 505.12127 279.39638 516.36725 262.7545 495.54492 246.07617 C 480.24936 228.1336 464.1985 209.24749 458.5918 170.54297 C 456.57577 142.69922 443.44132 114.46095 418.21289 106.88867 C 418.3308 106.213 418.40625 105.52397 418.40625 104.81641 C 418.40625 98.132239 412.91659 92.642578 406.23242 92.642578 z M 228.56641 95.810547 A 7.2508392 7.2508392 0 0 0 224.69922 97.078125 C 195.53191 116.49783 176.67557 148.0663 173.41602 182.95508 C 170.15646 217.84394 182.83317 252.35333 207.89844 276.83984 A 7.2508392 7.2508392 0 1 0 218.02344 266.45703 C 196.08052 245.02074 185.00388 214.84547 187.85742 184.30273 C 190.71089 153.75991 207.18674 126.14512 232.7207 109.14453 A 7.2508392 7.2508392 0 0 0 228.56641 95.810547 z M 584.07031 95.810547 A 7.2508392 7.2508392 0 0 0 579.91602 109.14453 C 605.44997 126.14512 621.92583 153.75991 624.7793 184.30273 C 627.63284 214.84547 616.55616 245.02074 594.61328 266.45703 A 7.2508392 7.2508392 0 1 0 604.73828 276.83984 C 629.80358 252.35333 642.48028 217.84394 639.2207 182.95508 C 635.96116 148.0663 617.10483 116.49783 587.9375 97.078125 A 7.2508392 7.2508392 0 0 0 584.07031 95.810547 z M 406.31055 100.38477 C 408.8725 100.38477 410.88281 102.39505 410.88281 104.95703 C 410.88281 105.09 410.85445 105.21404 410.84375 105.34375 C 409.36661 105.15351 407.86605 105.00549 406.31836 104.94922 C 404.76456 105.00572 403.25809 105.15419 401.77539 105.3457 C 401.76469 105.21539 401.73828 105.09063 401.73828 104.95703 C 401.73828 102.39505 403.74856 100.38477 406.31055 100.38477 z M 253.11523 124.91797 A 7.2508392 7.2508392 0 0 0 249.16797 125.96094 C 227.36743 138.78736 213.06209 161.34635 210.73828 186.5332 C 208.41447 211.72006 218.35378 236.50873 237.43945 253.10742 A 7.2508392 7.2508392 0 1 0 246.95312 242.16406 C 231.37659 228.61723 223.28315 208.4213 225.17969 187.86523 C 227.0763 167.30917 238.74089 148.92912 256.5332 138.46094 A 7.2508392 7.2508392 0 0 0 253.11523 124.91797 z M 559.52148 124.91797 A 7.2508392 7.2508392 0 0 0 556.10352 138.46094 C 573.89583 148.92912 585.56043 167.30917 587.45703 187.86523 C 589.35356 208.4213 581.25817 228.61723 565.68164 242.16406 A 7.2508392 7.2508392 0 1 0 575.19727 253.10742 C 594.28293 236.50873 604.22224 211.72006 601.89844 186.5332 C 599.57459 161.34635 585.26929 138.78736 563.46875 125.96094 A 7.2508392 7.2508392 0 0 0 559.52148 124.91797 z M 427.87305 287.06641 C 427.26507 287.1403 426.64702 287.19336 426.01758 287.19336 L 384.73438 287.19336 A 21.736652 21.736652 0 0 0 384.58203 289.63867 A 21.736652 21.736652 0 0 0 406.31836 311.375 A 21.736652 21.736652 0 0 0 428.05469 289.63867 A 21.736652 21.736652 0 0 0 427.87305 287.06641 z "
+       transform="scale(0.26458333)"
+       id="path1406" />
+  </g>
+</svg>

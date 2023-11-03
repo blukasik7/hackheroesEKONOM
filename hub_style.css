@@ -9,12 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    60deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(43, 7, 68, 1) 100%
-  );
+  background-image: url(data/svg/bg-1.svg);
   aspect-ratio: 960/540;
 }
 
@@ -67,10 +62,8 @@ body {
   width: 180px;
 }
 .kafelek img:hover {
-    
-    transition: 0.3s ease-in-out;
-    cursor:pointer;
-    
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
 }
 .kafelek:hover {
   font-size: 23pt;
@@ -88,4 +81,8 @@ body {
 }
 b {
   font-weight: 600;
+}
+a {
+  color: white;
+  text-decoration: none;
 }

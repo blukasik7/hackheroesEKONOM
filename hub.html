@@ -32,27 +32,30 @@
           />
         </center>
       </div>
-      <div class="kafelek glitch">Notatki</div>
-      <div class="kafelek glitch">Sprawdziany</div>
+      <a href="website2.html"><div class="kafelek glitch">Notatki</div></a>
+      <div class="kafelek glitch">Archiwum</div>
     </div>
     <script>
       function changeImage() {
+        var x = document.getElementById("notification").getAttribute("src");
+        console.log(x);
         if (
-          document.getElementById("notification").src ==
+          document.getElementById("notification").getAttribute("src") ==
           "data/svg/notification_logo.svg"
         ) {
-          document.getElementById("notification").src =
-            "data/svg/alert-bell.svg";
+          document
+            .getElementById("notification")
+            .setAttribute("src", "data/svg/alert-bell.svg");
         } else if (
-          document.getElementById("notification").src ==
+          document.getElementById("notification").getAttribute("src") ==
           "data/svg/alert-bell.svg"
         ) {
-          document.getElementById("notification").src =
-            "data/svg/notification_logo.svg";
+          document
+            .getElementById("notification")
+            .setAttribute("src", "data/svg/notification_logo.svg");
         }
-        console.log("test");
       }
-      
+      console.log("test");
     </script>
   </body>
 </html>

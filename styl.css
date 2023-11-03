@@ -11,7 +11,7 @@ body {
 }
 .przedmiot {
   color: white;
-  margin-top:90px;
+  margin-top: 90px;
 }
 p {
   color: white;
@@ -30,6 +30,12 @@ p {
   height: 10%;
   margin-right: 13%;
   margin-top: 13%;
+}
+#right_arrow:hover {
+  cursor: pointer;
+}
+#left_arrow:hover {
+  cursor: pointer;
 }
 main {
   padding: 30px;

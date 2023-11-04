@@ -9,12 +9,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    60deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(43, 7, 68, 1) 100%
-  );
+  background-image: url(data/svg/bg-2.svg);
   aspect-ratio: 960/540;
 }
 
@@ -46,7 +41,7 @@ body {
   justify-content: space-around;
   flex-direction: row;
   font-size: 16pt;
-  margin-top: 20px;
+  padding-top: 120px;
 }
 .kafelek {
   width: 300px;
@@ -58,7 +53,6 @@ body {
   justify-content: center;
   flex-direction: row;
 
-  margin-top: 100px;
   font-weight: bold;
   font-size: 23pt;
   box-shadow: 10px 5px 0px white;
@@ -88,4 +82,10 @@ body {
 }
 b {
   font-weight: 600;
+}
+a {
+  color: white;
+  text-decoration: none;
+  width: 300px;
+  height: 300px;
 }

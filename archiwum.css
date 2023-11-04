@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(data/svg/bg-1.svg);
+  aspect-ratio: 960/540;
+}
+.main {
+  display: flex;
+  align-items: start;
+  justify-content: left;
+  flex-direction: row;
+  width: 30%;
+  margin-top: 30px;
+}
+.kafelek {
+  border: 2px solid white;
+  width: 400px;
+  height: 150px;
+  margin-left: 50px;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24pt;
+}

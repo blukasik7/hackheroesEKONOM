@@ -239,25 +239,24 @@ def arhive_generate():
         global note_name
         note_name = os.listdir("notes")
         print(note_name[i])
-        object = '''<div class="kafelek">'''+str(note_name[i])+''' </div>'''
-        objects += object
+        obj = '''<div class="kafelek">'''+str(note_name[i])+''' </div>'''
+        objects += str(obj)
     print(number_of_files)
-    return objects
+    return str(objects)
 
 
 def arhive_notes_generate():
     notes = ""
 
     for i in range(number_of_files):
-        path = exam_list[i]+'''.html'''
 
-        path = note_name[i]+'''.htmk'''
+        path = note_name[i]
         note = '''<object data="notes/''' + \
-            str(path)+'''"style="width:100%;height=100%;display:none"id=''' + \
-            chr(65+1)+'''></object>'''
-        notes += note
+            str(path)+'''"style="width:100%;height:100%;display:none"id=''' + \
+            chr(65+i)+'''></object>'''
+        notes += str(note)
 
-    return notes
+    return str(notes)
 
 
 def show_notifications():
@@ -283,6 +282,9 @@ def show_notifications():
 
 arhive_number_of_notes()
 arhive_generate()
+with open("archiwum.html", "w", encoding="utf-8") as f:
+    f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>Archiwum</title>    <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
+            arhive_generate()+'''  </div>    <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ];    current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block";  </script></html>''')
 show_notifications()
 time.sleep(1000)
 show_notifications()

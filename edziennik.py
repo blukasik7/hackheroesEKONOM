@@ -161,11 +161,13 @@ async def main():
     for f_name in os.listdir("notes"):
         f_path = os.path.join("notes", f_name)
         if os.path.isfile(f_path):
-            modify_date = datetime.datetime.fromtimestamp(os.path.getmtime(f_path))
+            modify_date = datetime.datetime.fromtimestamp(
+                os.path.getmtime(f_path))
             if modify_date < days_ago:
-                os.remove(f_path)
                 print('Usunięto notatke: ' + str(f_path) +
                       ' gdyż zostala utworzona ponad 30 dni temu. Jezeli chcesz zachowac swoje notatki to skopiuj dane na swoj dysk.')
+
+                os.remove(f_path)
 
     await client.close()
 

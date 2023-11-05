@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Hub</title>
     <meta name="description" content="" />
+ <meta charset="UTF-8">
+    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
+    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
+    <meta name="rating" content="General">
+    <meta name='HandheldFriendly' content='True'>
+    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="hub_style.css" />
   </head>
   <body>
-    <div class="szczesliwy_nr">Szczęśliwy numerek: <b>37</b></div>
+    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> Brak</b></div>
     <div class="main">
       <div class="user_welcome">
         <h1>Cześć,</h1>
-        <p>Bartosz Łukasik</p>
+        <p>Remigiusz Jakub Łukasik</p>
       </div>
-
       <br />
-      <div class="exams_info">Masz zapowiedziane 80 sprawdzianów!</div>
+      <div class="exams_info">Masz zapowiedziane 8 sprawdzianów!</div>
     </div>
-
     <div class="kafelki">
       <div class="kafelek">
         <center>
@@ -32,27 +35,37 @@
           />
         </center>
       </div>
-      <div class="kafelek glitch">Notatki</div>
-      <div class="kafelek glitch">Sprawdziany</div>
+      <a href="website2.html"><div class="kafelek">Notatki</div></a>
+      <a href="archiwum.html"><div class="kafelek">Archiwum</div></a>
     </div>
     <script>
+      var ison = 1;
       function changeImage() {
+        var x = document.getElementById("notification").getAttribute("src");
+        console.log(x);
         if (
-          document.getElementById("notification").src ==
+          document.getElementById("notification").getAttribute("src") ==
           "data/svg/notification_logo.svg"
         ) {
-          document.getElementById("notification").src =
-            "data/svg/alert-bell.svg";
+          document
+            .getElementById("notification")
+            .setAttribute("src", "data/svg/alert-bell.svg");
+          var ison = 0;
+          console.log(ison);
         } else if (
-          document.getElementById("notification").src ==
+          document.getElementById("notification").getAttribute("src") ==
           "data/svg/alert-bell.svg"
         ) {
-          document.getElementById("notification").src =
-            "data/svg/notification_logo.svg";
+          document
+            .getElementById("notification")
+            .setAttribute("src", "data/svg/notification_logo.svg");
+          var ison = 1;
+          console.log(ison);
         }
-        console.log("test");
+        $filename = "notification_settings.txt";
+        $content = ison;
+        file_put_contents($filename, $content);
       }
-      
     </script>
   </body>
 </html>

@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  color: white;
+  overflow: hidden;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(data/svg/bg-1.svg);
+  aspect-ratio: 960/540;
+}
+.scroller {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 27%;
+  margin-top: 30px;
+  height: 100%;
+  overflow: visible;
+  overflow-x: hidden;
+}
+.kafelek {
+  border: 2px solid white;
+  width: 400px;
+  height: 150px;
+  margin-left: 0px;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14pt;
+  margin-bottom: 30px;
+  min-height: 150px;
+  text-align: center;
+}
+.main {
+  background-color: white;
+  width: 60%;
+  height: auto;
+  float: right;
+  margin-right: 100px;
+  margin-bottom: 100px;
+  border-radius: 50px;
+  margin-top: 100px;
+  margin-left: 100px;
+  color:black;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 36pt;
+  padding-top: 80px;
+  padding-left: 30px;
+  
+  
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+ 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #540cfd;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #990cfdb1;
+}

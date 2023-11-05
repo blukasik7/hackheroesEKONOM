@@ -10,23 +10,23 @@
   </head>
   <body>
     <div class="scroller">
-      <div class="kafelek">
+      <div class="kafelek" id="0">
         DZial 2. slowka, pytania. Poprawa za tydzien.html
       </div>
-      <div class="kafelek">GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa.html</div>
-      <div class="kafelek">II termin Makbet.html</div>
-      <div class="kafelek">II termin wypracowania.html</div>
-      <div class="kafelek">Metody zarządzania projektami.html</div>
-      <div class="kafelek">notes.css</div>
-      <div class="kafelek">
+      <div class="kafelek" id="1">GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa.html</div>
+      <div class="kafelek" id="2">II termin Makbet.html</div>
+      <div class="kafelek" id="3">II termin wypracowania.html</div>
+      <div class="kafelek" id="4">Metody zarządzania projektami.html</div>
+      <div class="kafelek" id="5">notes.css</div>
+      <div class="kafelek" id="6">
         od str. 30, gospodarowanie , rynek, pieniądz..html
       </div>
-      <div class="kafelek">
+      <div class="kafelek" id="7">
         Odprawa posłów greckich - znajomość lektury.html
       </div>
-      <div class="kafelek">odżywianie.html</div>
-      <div class="kafelek">PARAMETRY - poprawa l.1 s.25.html</div>
-      <div class="kafelek">Sprawdzian MDL cz.2 - materiały w MS Teams.html</div>
+      <div class="kafelek" id="8">odżywianie.html</div>
+      <div class="kafelek" id="9">PARAMETRY - poprawa l.1 s.25.html</div>
+      <div class="kafelek" id="10">Sprawdzian MDL cz.2 - materiały w MS Teams.html</div>
     </div>
     <div class="main">
       <object
@@ -87,6 +87,7 @@
     </div>
   </body>
   <script>
+    var numberOfNotes=11;
     note_ids = [
       "A",
       "B",
@@ -115,7 +116,19 @@
       "Y",
       "Z",
     ];
+   
+    for(var i=0;i<numberOfNotes;i++){
+      document.getElementById(i).addEventListener("click", zmiana, false);
+    }
     current_note = 0;
-    document.getElementById(note_ids[current_note]).style.display = "";
+    function zmiana(){
+      nowy=this.id;
+      console.log("naciśnięto");
+      document.getElementById(note_ids[current_note]).style.display = "none";
+      document.getElementById(note_ids[nowy]).style.display = "initial";
+      current_note=nowy;
+    }
+    document.getElementById(note_ids[0]).style.display = "initial";
+    
   </script>
 </html>

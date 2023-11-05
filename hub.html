@@ -51,7 +51,8 @@
             .getElementById("notification")
             .setAttribute("src", "data/svg/alert-bell.svg");
           var ison = 0;
-          console.log(ison);
+  alert("Powiadomienia są teraz wyłączone"); 
+         console.log(ison);
         } else if (
           document.getElementById("notification").getAttribute("src") ==
           "data/svg/alert-bell.svg"
@@ -60,7 +61,7 @@
             .getElementById("notification")
             .setAttribute("src", "data/svg/notification_logo.svg");
           var ison = 1;
-          console.log(ison);
+   alert("Powiadomienia są teraz włączone");       console.log(ison);
         }
         $filename = "notification_settings.txt";
         $content = ison;

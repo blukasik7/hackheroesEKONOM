@@ -9,10 +9,10 @@ import os.path
 import re
 import time
 from winotify import Notification, audio
-# wczytywanie danych o koncie ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
+# wczytywanie danych o koncie ze wczesniej zapisanego pliku json.
 with open(r"C:\account.json") as f:
     account = Account.load(f.read())
-# wczytywanie klucza ze wczesniej zapisanego pliku json. W cudzyslowach wpisz swoja sciezke do pliku
+# wczytywanie klucza ze wczesniej zapisanego pliku json. 
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
 
@@ -104,13 +104,13 @@ async def main():
     lucky_number = await client.data.get_lucky_number(present)
     global number
     if (lucky_number.number != 0):
-        print("Dzisiejszy szczęśliwy numerek to: " +
-              str(lucky_number.number)+"\n")
+        #print("Dzisiejszy szczęśliwy numerek to: " +
+              #str(lucky_number.number)+"\n")
         number = lucky_number.number
 
     else:
         number = "Brak"
-        print("Dzisiaj nie ma szczęśliwego numerka \n")
+        #print("Dzisiaj nie ma szczęśliwego numerka \n")
 
     lessons_topics_list = []
 
@@ -122,7 +122,7 @@ async def main():
     #    print(lesson.subject)
     global name
     name = client.student.full_name
-    print(name)
+    #print (name)
     # name_doc = open('data/name.txt', 'w', encoding="utf-8")
     # name_doc.write(name)
     # name_doc.close()
@@ -149,14 +149,14 @@ async def main():
             exam_list.append(str(str.replace(exam_topic, '\n', '')))
             exam_subject = str(ex_info.subject.name)
             exam_subjects.append(exam_subject)
-    print(return_all(exam_list))
+    #print(return_all(exam_list))
     all_exams = return_all(exam_list)
 
     exam_doc = open('data/exams.txt', "w", encoding="utf-8")
     exam_doc.write(all_exams)
     exam_doc.close()
     with open("subpages/hub.html", "w", encoding="utf-8") as hub:
-        hub.write('''<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <title>Hub VulcaNote</title>\n    <meta name="description" content="Ta podstrona to hub, służący do nawigowania po naszym projekcie." />\n <meta charset="UTF-8">\n    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="rating" content="General">\n    <meta name='HandheldFriendly' content='True'>\n    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <link rel="stylesheet" href="hub_style.css" />\n  </head>\n  <body>\n    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> '''+str(number)+'''</b></div>\n    <div class="main">\n      <div class="user_welcome">\n        <h1>Cześć,</h1>\n        <p>'''+str(name)+'''</p>\n      </div>\n      <br />\n      <div class="exams_info">Masz zapowiedziane '''+str(len(exam_list)) +
+        hub.write('''<!DOCTYPE html>\n<html>\n  <head>\n   <link rel="icon" type="image/x-icon" href="../data/img/notes.png">  <meta charset="utf-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <title>VulcaNote - Hub</title>\n    <meta name="description" content="Ta podstrona to hub, służący do nawigowania po naszym projekcie." />\n <meta charset="UTF-8">\n    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="rating" content="General">\n    <meta name='HandheldFriendly' content='True'>\n    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <link rel="stylesheet" href="hub_style.css" />\n  </head>\n  <body>\n    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> '''+str(number)+'''</b></div>\n    <div class="main">\n      <div class="user_welcome">\n        <h1>Cześć,</h1>\n        <p>'''+str(name)+'''</p>\n      </div>\n      <br />\n      <div class="exams_info">Masz zapowiedziane '''+str(len(exam_list)) +
                   ''' sprawdzianów!</div>\n    </div>\n    <div class="kafelki">\n      <div class="kafelek">\n        <center>\n          <img\n            id="notification"\n            src="../data/svg/notification_logo.svg"\n            alt="Powiadomienia"\n            onclick="changeImage()"\n          />\n        </center>\n      </div>\n      <a href="website2.html"><div class="kafelek">Notatki</div></a>\n      <a href="archiwum.html"><div class="kafelek">Archiwum</div></a>\n    </div>\n    <script>\n      var ison = 1;\n      function changeImage() {\n        var x = document.getElementById("notification").getAttribute("src");\n        console.log(x);\n        if (\n          document.getElementById("notification").getAttribute("src") ==\n          "../data/svg/notification_logo.svg"\n        ) {\n          document\n            .getElementById("notification")\n            .setAttribute("src", "../data/svg/alert-bell.svg");\n          var ison = 0;\n  alert("Powiadomienia są teraz wyłączone"); \n         console.log(ison);\n        } else if (\n          document.getElementById("notification").getAttribute("src") ==\n          "../data/svg/alert-bell.svg"\n        ) {\n          document\n            .getElementById("notification")\n            .setAttribute("src", "../data/svg/notification_logo.svg");\n          var ison = 1;\n   alert("Powiadomienia są teraz włączone");       console.log(ison);\n        }\n        $filename = "notification_settings.txt";\n        $content = ison;\n        file_put_contents($filename, $content);\n      }\n    </script>\n  </body>\n</html>\n''')
 
     for f_name in os.listdir("notes"):
@@ -192,13 +192,14 @@ if __name__ == "__main__":
 
             if not (check_exist("notes/"+str(exam_list[i])+'.html')):
                 try:
+                    print("Trwa generowanie notatek. Proces może zająć kilka minut, proszę nie wyłączać programu.")
                     response = await g4f.ChatCompletion.create_async(
                         model=g4f.models.gpt_35_turbo,
                         messages=[
                             {"role": "user", "content": "Wygeneruj szczegółową notatkę dzięki której uczeń w pełni przygotuje się na sprawdzian z tematu:" + exam_list[i] + "z przedmiotu szkolnego: " + exam_subjects[i]+". Zawrzyj wszystkie informacje, które mogą być przydatne."}],
                         provider=provider
                     )
-                    print(response)
+                    #print(response)
                     with open("notes/"+str(exam_list[i])+'.html', 'w', encoding="utf-8") as plik:
 
                         plik.write(
@@ -206,10 +207,10 @@ if __name__ == "__main__":
 
                 except Exception as e:
                     print(f"{provider.__name__}:", e)
-            else:
-                print("Notatka już istnieje!")
+            
+                #print("Notatka już istnieje!")
         with open('subpages/website2.html', 'w', encoding="utf-8") as website:
-            website.write('''<!DOCTYPE html> <html> <head> <title>Notatki VulcaNote</title> <meta charset="utf-8" /> <link href="styl.css" type="text/css" rel="stylesheet" /> </head> <body> <div style="position: absolute"><a href="hub.html" title="Naciśnij aby wrócić do panelu głównego.">   <img  src="../data/svg/home-alt-svgrepo-com.svg" style="width: 100px; float: left; margin-left: 100px" />   </a>  </div> '''+generate_exam_subject(exam_subjects)+generate_topic_paragraph(exam_list)+''' <br /> <div id="left_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <main>''' + generate_objects(exam_list)+''' </main> <div id="right_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <div id="circles_div"></div> <script>      var ilosc_plikow ='''+str(len(exam_list))+''';      var NumberOfCircles = ilosc_plikow;      var circles_div = document.getElementById("circles_div");      var currentCard = 0;      r_arrow = document.getElementById("right_arrow");      l_arrow = document.getElementById("left_arrow");      r_arrow.addEventListener("click", r_arrow_click, false);      l_arrow.addEventListener("click", l_arrow_click, false);      function changeCard(stary, nowy) {        var div = document.getElementById("circles_div");        var kolka = div.getElementsByTagName("div");        document.getElementById(ids[stary]).style.display = "none";        document.getElementById(ids[nowy]).style.display = "block";        kolka[stary].style.background = "white";        kolka[nowy].style.background = "black";        currentCard = nowy;        document.getElementById(p_ids[stary]).style.display = "none";        document.getElementById(sub_ids[stary]).style.display = "none";        document.getElementById(p_ids[nowy]).style.display = "block";        document.getElementById(sub_ids[nowy]).style.display = "block";      }      function r_arrow_click() {        if (currentCard < ilosc_plikow - 1) {          changeCard(currentCard, currentCard + 1);        }      }      function l_arrow_click() {        if (currentCard > 0) {          changeCard(currentCard, currentCard - 1);        }      }      for (let i = 0; i < NumberOfCircles; i++) {        const circle = document.createElement("div");        circle.setAttribute("id", "circle" + i.toString() + "");        circles_div.appendChild(circle);        circle.addEventListener("click", CircleFunction, false);        circle.name = i;      }      ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];      p_ids = [        "pierwszy",        "drugi",        "trzeci",        "czwarty",        "piaty",        "szosty",        "siodmy",        "osmy",      ];      sub_ids = [        "first",        "second",        "third",        "fourth",        "fifth",        "sixth",        "seventh",        "eighth",      ];      function display_first() {        changeCard(0, 0);      }      display_first();      function CircleFunction() {        console.log(          "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +            this.name        );        changeCard(currentCard, this.name);      }    </script></body> </html> ''')
+            website.write('''<!DOCTYPE html> <html> <head> <title>VulcaNote - Notatki</title> <meta charset="utf-8" /> <link rel="icon" type="image/x-icon" href="../data/img/notes.png"> <link href="styl.css" type="text/css" rel="stylesheet" /> </head> <body> <div style="position: absolute"><a href="hub.html" title="Naciśnij aby wrócić do panelu głównego.">   <img  src="../data/svg/home-alt-svgrepo-com.svg" style="width: 100px; float: left; margin-left: 100px" />   </a>  </div> '''+generate_exam_subject(exam_subjects)+generate_topic_paragraph(exam_list)+''' <br /> <div id="left_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <main>''' + generate_objects(exam_list)+''' </main> <div id="right_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <div id="circles_div"></div> <script>      var ilosc_plikow ='''+str(len(exam_list))+''';      var NumberOfCircles = ilosc_plikow;      var circles_div = document.getElementById("circles_div");      var currentCard = 0;      r_arrow = document.getElementById("right_arrow");      l_arrow = document.getElementById("left_arrow");      r_arrow.addEventListener("click", r_arrow_click, false);      l_arrow.addEventListener("click", l_arrow_click, false);      function changeCard(stary, nowy) {        var div = document.getElementById("circles_div");        var kolka = div.getElementsByTagName("div");        document.getElementById(ids[stary]).style.display = "none";        document.getElementById(ids[nowy]).style.display = "block";        kolka[stary].style.background = "white";        kolka[nowy].style.background = "black";        currentCard = nowy;        document.getElementById(p_ids[stary]).style.display = "none";        document.getElementById(sub_ids[stary]).style.display = "none";        document.getElementById(p_ids[nowy]).style.display = "block";        document.getElementById(sub_ids[nowy]).style.display = "block";      }      function r_arrow_click() {        if (currentCard < ilosc_plikow - 1) {          changeCard(currentCard, currentCard + 1);        }      }      function l_arrow_click() {        if (currentCard > 0) {          changeCard(currentCard, currentCard - 1);        }      }      for (let i = 0; i < NumberOfCircles; i++) {        const circle = document.createElement("div");        circle.setAttribute("id", "circle" + i.toString() + "");        circles_div.appendChild(circle);        circle.addEventListener("click", CircleFunction, false);        circle.name = i;      }      ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];      p_ids = [        "pierwszy",        "drugi",        "trzeci",        "czwarty",        "piaty",        "szosty",        "siodmy",        "osmy",      ];      sub_ids = [        "first",        "second",        "third",        "fourth",        "fifth",        "sixth",        "seventh",        "eighth",      ];      function display_first() {        changeCard(0, 0);      }      display_first();      function CircleFunction() {        console.log(          "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +            this.name        );        changeCard(currentCard, this.name);      }    </script></body> </html> ''')
 
     async def run_all():
         calls = [
@@ -238,13 +239,13 @@ def arhive_generate():
     for i in range(arhive_number_of_notes()):
         global note_name
         note_name = os.listdir("notes")
-        print(note_name[i])
+        #print(note_name[i])
         
         obj = '''<div class="kafelek" id="'''+str(i)+'''">'''+str(note_name[i]).replace('.html','')+''' </div>'''
         objects += str(obj)
         
        
-    print(number_of_files)
+    #print(number_of_files)
     return str(objects)
 
 
@@ -282,8 +283,8 @@ def show_notifications():
             toast.set_audio(audio.SMS, loop=False)
             if (dates_difference <= timedelta.Timedelta(days=2)):
                 time.sleep(10)
-                print(str(exam_subjects[i])+' '+str(exam_list[i]))
-                print(dates_difference)
+                #print(str(exam_subjects[i])+' '+str(exam_list[i]))
+                #print(dates_difference)
                 toast.show()
                 time.sleep(1800)
 
@@ -291,8 +292,8 @@ def show_notifications():
 arhive_number_of_notes()
 arhive_generate()
 with open("subpages/archiwum.html", "w", encoding="utf-8") as f:
-    f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>Archiwum notatek VulcaNote</title>    <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
-            arhive_generate()+'''  </div>    <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ]; numberOfNotes = '''+str(number_of_files) +''';  current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block"; for(var i=0;i<numberOfNotes;i++){      document.getElementById(i).addEventListener("click", zmiana, false);    }    current_note = 0;    function zmiana(){      nowy=this.id;      console.log("naciśnięto");      document.getElementById(note_ids[current_note]).style.display = "none";      document.getElementById(note_ids[nowy]).style.display = "initial";      current_note=nowy;    }    document.getElementById(note_ids[0]).style.display = "initial";      </script></html>''')
+    f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>VulcaNote - Archiwum notatek</title>  <link rel="icon" type="image/x-icon" href="../data/img/notes.png">  <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
+            arhive_generate()+'''  </div>  <div style="height: 100px; width: 100px; margin-top: 20%">      <a href="hub.html">        <img          src="../data/svg/home-alt-svgrepo-com.svg"          width="100px;"          style="margin-left: 40px; cursor: pointer"          title="Naciśnij aby wrócić do panelu głownego."        />      </a>    </div>  <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ]; numberOfNotes = '''+str(number_of_files) +''';  current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block"; for(var i=0;i<numberOfNotes;i++){      document.getElementById(i).addEventListener("click", zmiana, false);    }    current_note = 0;    function zmiana(){      nowy=this.id;      console.log("naciśnięto");      document.getElementById(note_ids[current_note]).style.display = "none";      document.getElementById(note_ids[nowy]).style.display = "initial";      current_note=nowy;    }    document.getElementById(note_ids[0]).style.display = "initial";      </script></html>''')
 arhive_generate()
 show_notifications()
 time.sleep(1000)

@@ -29,20 +29,21 @@ body {
   border: 2px solid white;
   width: 400px;
   height: 150px;
-  margin-left: 50px;
+  margin-left: 0px;
   border-radius: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 24pt;
+  font-size: 14pt;
   margin-bottom: 30px;
   min-height: 150px;
+  text-align: center;
 }
 .main {
   background-color: white;
   width: 60%;
-  height: 80%;
+  height: auto;
   float: right;
   margin-right: 100px;
   margin-bottom: 100px;
@@ -51,10 +52,13 @@ body {
   margin-left: 100px;
   color:black;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  font-size: 26pt;
-  font-weight: 500;
+  font-size: 36pt;
+  padding-top: 80px;
+  padding-left: 30px;
+  
+  
 }
 /* width */
 ::-webkit-scrollbar {

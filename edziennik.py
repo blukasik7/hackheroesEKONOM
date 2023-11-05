@@ -238,7 +238,7 @@ def arhive_generate():
         global note_name
         note_name = os.listdir("notes")
         print(note_name[i])
-        obj = '''<div class="kafelek">'''+str(note_name[i])+''' </div>'''
+        obj = '''<div class="kafelek" id="'''+str(i)+'''">'''+str(note_name[i])+''' </div>'''
         objects += str(obj)
     print(number_of_files)
     return str(objects)
@@ -287,7 +287,7 @@ arhive_number_of_notes()
 arhive_generate()
 with open("subpages/archiwum.html", "w", encoding="utf-8") as f:
     f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>Archiwum</title>    <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
-            arhive_generate()+'''  </div>    <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ];    current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block";  </script></html>''')
+            arhive_generate()+'''  </div>    <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ]; numberOfNotes = '''+str(number_of_files) +''';  current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block"; for(var i=0;i<numberOfNotes;i++){      document.getElementById(i).addEventListener("click", zmiana, false);    }    current_note = 0;    function zmiana(){      nowy=this.id;      console.log("naciśnięto");      document.getElementById(note_ids[current_note]).style.display = "none";      document.getElementById(note_ids[nowy]).style.display = "initial";      current_note=nowy;    }    document.getElementById(note_ids[0]).style.display = "initial";      </script></html>''')
 arhive_generate()
 show_notifications()
 time.sleep(1000)

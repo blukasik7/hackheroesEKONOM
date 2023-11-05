@@ -1,6 +1,6 @@
 from vulcan import *
 import asyncio
-import vulcan
+
 import datetime
 import os
 import timedelta
@@ -98,8 +98,7 @@ async def main():
 
     present = datetime.datetime.today()
     days_ago = present - datetime.timedelta(days=30)
-    yesterday = present - datetime.timedelta(days=1)
-    twodago = present - datetime.timedelta(days=2)
+    
 
     lucky_number = await client.data.get_lucky_number(present)
     global number
@@ -112,20 +111,10 @@ async def main():
         number = "Brak"
         #print("Dzisiaj nie ma szczęśliwego numerka \n")
 
-    lessons_topics_list = []
-
-    # attendance = await client.data.get_attendance();
-    # async for attend in attendance:
-    #    print(attend.topic)
-    # lessons = await client.data.get_lessons(date_from=yesterday, date_to=yesterday)
-    # async for lesson in lessons:
-    #    print(lesson.subject)
     global name
     name = client.student.full_name
     #print (name)
-    # name_doc = open('data/name.txt', 'w', encoding="utf-8")
-    # name_doc.write(name)
-    # name_doc.close()
+   
 
     exam = await client.data.get_exams()
     # pusta lista na tematy sprawdzianów
@@ -293,7 +282,7 @@ arhive_number_of_notes()
 arhive_generate()
 with open("subpages/archiwum.html", "w", encoding="utf-8") as f:
     f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>VulcaNote - Archiwum notatek</title>  <link rel="icon" type="image/x-icon" href="../data/img/notes.png">  <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
-            arhive_generate()+'''  </div>  <div style="height: 100px; width: 100px; margin-top: 20%">      <a href="hub.html">        <img          src="../data/svg/home-alt-svgrepo-com.svg"          width="100px;"          style="margin-left: 40px; cursor: pointer"          title="Naciśnij aby wrócić do panelu głownego."        />      </a>    </div>  <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ]; numberOfNotes = '''+str(number_of_files) +''';  current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block"; for(var i=0;i<numberOfNotes;i++){      document.getElementById(i).addEventListener("click", zmiana, false);    }    current_note = 0;    function zmiana(){      nowy=this.id;      console.log("naciśnięto");      document.getElementById(note_ids[current_note]).style.display = "none";      document.getElementById(note_ids[nowy]).style.display = "initial";      current_note=nowy;    }    document.getElementById(note_ids[0]).style.display = "initial";      </script></html>''')
+            arhive_generate()+'''  </div>  <div style="height: 100px; width: 100px; margin-top: 20%">      <a href="hub.html">        <img          src="../data/svg/home-alt-svgrepo-com.svg"          width="100px;"    id="domek"      style="margin-left: 40px; cursor: pointer"          title="Naciśnij aby wrócić do panelu głownego."        />      </a>    </div>  <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ]; numberOfNotes = '''+str(number_of_files) +''';  current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block"; for(var i=0;i<numberOfNotes;i++){      document.getElementById(i).addEventListener("click", zmiana, false);    }    current_note = 0;    function zmiana(){      nowy=this.id;      console.log("naciśnięto");      document.getElementById(note_ids[current_note]).style.display = "none";      document.getElementById(note_ids[nowy]).style.display = "initial";      current_note=nowy;    }    document.getElementById(note_ids[0]).style.display = "initial";      </script></html>''')
 arhive_generate()
 show_notifications()
 time.sleep(1000)

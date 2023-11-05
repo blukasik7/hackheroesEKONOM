@@ -3,33 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HackHeroes - Logowanie</title>
-
+    <title>HackHeroes - FormTest</title>
     <link rel="stylesheet" href="style.css" />
+
+    <!--Biblioteka FileWriter-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
+      integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script type="text/javascript">
-      /* NODE NIE DZIAŁA CLIENT-SIDE
-      import * as fs from 'node:fs';
       function manageForm() {
-        try{
-          const dane_id = ['token', 'symbol', 'pin'];
-          var dane = '';
-          for(let i = 0; i < 3; i++){
-            dane += document.getElementById(dane_id[i]);
-            if(i != 2){
-              dane += "\n";
+        try {
+          let extractedData = "";
+          let ids = ["token", "symbol", "pin"];
+
+          //Uzyskaj i przeformatuj dane z formularza
+          for (let i = 0; i < ids.length; i++) {
+            let delimiter = "\n";
+            if (i + 1 == ids.length) {
+              delimiter = "";
             }
+            extractedData += document.getElementById(ids[i]).value + delimiter;
           }
+
+          //Sprawdź zawartość bez zapisywania pliku
+          console.log(extractedData);
+
+          //Stwórz plik.
+          var tekst = new Blob([extractedData], {
+            type: "text/plain;charset=utf-8",
+          });
+
+          //Zapisz plik
+          saveAs(tekst, "uonet_pass.txt");
+        } catch (error) {
+          console.error("Wystąpił błąd: " + error);
         }
-        catch(e){
-          console.error("Wystąpił błąd: " + err);
-        }
-        fs.writeFile('uonet_pass.txt', 'This is my text', function (err){
-          if(err) throw("Wystąpił błąd: " + err);
-        });
       }
-      */
     </script>
   </head>
+
   <body class="full fx">
     <div class="bgsvg"></div>
     <br />
@@ -71,47 +86,5 @@
     <div class="help">
       <a href="instrukcja.html" target="_blank">instrukcja</a>
     </div>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"
-      integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script type="text/javascript">
-      function manageForm() {
-        import * as fs from "node:fs";
-        let extractedData = "";
-        let ids = ["token", "symbol", "pin"];
-        //Uzyskaj i przeformatuj dane z formularza
-        for (let i = 0; i < ids.length; i++) {
-          let delimiter = "\n";
-          if (i + 1 == ids.length) {
-            delimiter = "";
-            const dane_id = ["token", "symbol", "pin"];
-            var dane = "";
-            for (let i = 0; i < 3; i++) {
-              dane += document.getElementById(dane_id[i]);
-              if (i != 2) {
-                dane += "\n";
-              }
-              extractedData +=
-                document.getElementById(ids[i]).value + delimiter;
-            }
-            //Sprawdź zawartość bez zapisywania pliku
-            console.log(extractedData);
-            //Stwórz plik.
-            var tekst = new Blob([extractedData], {
-              type: "text/plain;charset=utf-8",
-            });
-            //Zapisz plik
-            saveAs(tekst, "uonet_pass.txt");
-          }
-
-          fs.writeFile("uonet_pass.txt", "This is my text", function (err) {
-            if (err) throw "Wystąpił błąd: " + err;
-          });
-        }
-      }
-    </script>
   </body>
 </html>

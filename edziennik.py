@@ -202,7 +202,7 @@ if __name__ == "__main__":
                     with open("notes/"+str(exam_list[i])+'.html', 'w', encoding="utf-8") as plik:
 
                         plik.write(
-                            '<!DOCTYPE html><html><head><meta charset="utf-8"><link rel = "stylesheet" href="notes.css"></head><body>'+replace_empty_lines(str(response))+'</body></html>')
+                            '<!DOCTYPE html><html><head><meta charset="utf-8"><link rel = "stylesheet" href="../data/notes.css"></head><body>'+replace_empty_lines(str(response))+'</body></html>')
 
                 except Exception as e:
                     print(f"{provider.__name__}:", e)
@@ -239,8 +239,11 @@ def arhive_generate():
         global note_name
         note_name = os.listdir("notes")
         print(note_name[i])
-        obj = '''<div class="kafelek" id="'''+str(i)+'''">'''+str(note_name[i])+''' </div>'''
+        
+        obj = '''<div class="kafelek" id="'''+str(i)+'''">'''+str(note_name[i]).replace('.html','')+''' </div>'''
         objects += str(obj)
+        
+       
     print(number_of_files)
     return str(objects)
 

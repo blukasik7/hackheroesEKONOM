@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Hub</title>
     <meta name="description" content="" />
- <meta charset="UTF-8">
-    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
-    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
-    <meta name="rating" content="General">
-    <meta name='HandheldFriendly' content='True'>
-    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>
+    <meta charset="UTF-8" />
+    <meta
+      name="author"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
+    <meta
+      name="owner"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
+    <meta name="rating" content="General" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta
+      name="copyright"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="hub_style.css" />
   </head>
@@ -51,8 +60,8 @@
             .getElementById("notification")
             .setAttribute("src", "../data/svg/alert-bell.svg");
           var ison = 0;
-  alert("Powiadomienia są teraz wyłączone"); 
-         console.log(ison);
+          alert("Powiadomienia są teraz wyłączone");
+          console.log(ison);
         } else if (
           document.getElementById("notification").getAttribute("src") ==
           "../data/svg/alert-bell.svg"
@@ -61,7 +70,8 @@
             .getElementById("notification")
             .setAttribute("src", "../data/svg/notification_logo.svg");
           var ison = 1;
-   alert("Powiadomienia są teraz włączone");       console.log(ison);
+          alert("Powiadomienia są teraz włączone");
+          console.log(ison);
         }
         $filename = "notification_settings.txt";
         $content = ison;

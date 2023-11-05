@@ -3,7 +3,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  background-image: url("data/svg/bg-1.svg");
+  background-image: url("../data/svg/bg-1.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

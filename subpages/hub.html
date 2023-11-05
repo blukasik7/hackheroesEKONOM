@@ -29,7 +29,7 @@
         <center>
           <img
             id="notification"
-            src="data/svg/notification_logo.svg"
+            src="../data/svg/notification_logo.svg"
             alt="Powiadomienia"
             onclick="changeImage()"
           />
@@ -45,21 +45,21 @@
         console.log(x);
         if (
           document.getElementById("notification").getAttribute("src") ==
-          "data/svg/notification_logo.svg"
+          "../data/svg/notification_logo.svg"
         ) {
           document
             .getElementById("notification")
-            .setAttribute("src", "data/svg/alert-bell.svg");
+            .setAttribute("src", "../data/svg/alert-bell.svg");
           var ison = 0;
   alert("Powiadomienia są teraz wyłączone"); 
          console.log(ison);
         } else if (
           document.getElementById("notification").getAttribute("src") ==
-          "data/svg/alert-bell.svg"
+          "../data/svg/alert-bell.svg"
         ) {
           document
             .getElementById("notification")
-            .setAttribute("src", "data/svg/notification_logo.svg");
+            .setAttribute("src", "../data/svg/notification_logo.svg");
           var ison = 1;
    alert("Powiadomienia są teraz włączone");       console.log(ison);
         }

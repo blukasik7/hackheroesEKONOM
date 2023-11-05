@@ -96,10 +96,12 @@ async def main():
     # ustala daty
 
     present = datetime.datetime.today()
+    days_ago = present - datetime.timedelta(days=30)
     yesterday = present - datetime.timedelta(days=1)
     twodago = present - datetime.timedelta(days=2)
 
     lucky_number = await client.data.get_lucky_number(present)
+    global number
     if (lucky_number.number != 0):
         print("Dzisiejszy szczęśliwy numerek to: " +
               str(lucky_number.number)+"\n")
@@ -117,7 +119,7 @@ async def main():
     # lessons = await client.data.get_lessons(date_from=yesterday, date_to=yesterday)
     # async for lesson in lessons:
     #    print(lesson.subject)
-
+    global name
     name = client.student.full_name
     print(name)
     # name_doc = open('data/name.txt', 'w', encoding="utf-8")
@@ -155,18 +157,15 @@ async def main():
     with open("hub.html", "w", encoding="utf-8") as hub:
         hub.write('''<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset="utf-8" />\n    <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n    <title>Hub</title>\n    <meta name="description" content="" />\n <meta charset="UTF-8">\n    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">\n    <meta name="rating" content="General">\n    <meta name='HandheldFriendly' content='True'>\n    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <link rel="stylesheet" href="hub_style.css" />\n  </head>\n  <body>\n    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> '''+str(number)+'''</b></div>\n    <div class="main">\n      <div class="user_welcome">\n        <h1>Cześć,</h1>\n        <p>'''+str(name)+'''</p>\n      </div>\n      <br />\n      <div class="exams_info">Masz zapowiedziane '''+str(len(exam_list)) +
                   ''' sprawdzianów!</div>\n    </div>\n    <div class="kafelki">\n      <div class="kafelek">\n        <center>\n          <img\n            id="notification"\n            src="data/svg/notification_logo.svg"\n            alt="Powiadomienia"\n            onclick="changeImage()"\n          />\n        </center>\n      </div>\n      <a href="website2.html"><div class="kafelek">Notatki</div></a>\n      <a href="archiwum.html"><div class="kafelek">Archiwum</div></a>\n    </div>\n    <script>\n      var ison = 1;\n      function changeImage() {\n        var x = document.getElementById("notification").getAttribute("src");\n        console.log(x);\n        if (\n          document.getElementById("notification").getAttribute("src") ==\n          "data/svg/notification_logo.svg"\n        ) {\n          document\n            .getElementById("notification")\n            .setAttribute("src", "data/svg/alert-bell.svg");\n          var ison = 0;\n          console.log(ison);\n        } else if (\n          document.getElementById("notification").getAttribute("src") ==\n          "data/svg/alert-bell.svg"\n        ) {\n          document\n            .getElementById("notification")\n            .setAttribute("src", "data/svg/notification_logo.svg");\n          var ison = 1;\n          console.log(ison);\n        }\n        $filename = "notification_settings.txt";\n        $content = ison;\n        file_put_contents($filename, $content);\n      }\n    </script>\n  </body>\n</html>\n''')
-    # html_template = '<!DOCTYPE html>\
-    #                    <html>\
-    #                    <head>\
-    #                        <meta charset="utf-8">\
-    #                    </head>\
-    #                    <body>\
-    #                        <p>'+all_exams+'  </p>\
-    #                    </body>\
-    #                    </html>'
 
-    # html = open('website.html', 'w', encoding="utf-8")
-    # html.write(html_template)
+    for f_name in os.listdir("notes"):
+        f_path = os.path.join("notes", f_name)
+        if os.path.isfile(f_path):
+            modify_date = datetime.datetime.fromtimestamp(os.path.getmtime(f_path))
+            if modify_date < days_ago:
+                os.remove(f_path)
+                print('Usunięto notatke: ' + str(f_path) +
+                      ' gdyż zostala utworzona ponad 30 dni temu. Jezeli chcesz zachowac swoje notatki to skopiuj dane na swoj dysk.')
 
     await client.close()
 
@@ -218,7 +217,6 @@ if __name__ == "__main__":
 
     asyncio.run(run_all())
     os.system(f'start hub.html')
-notifications = True
 
 
 def arhive_number_of_notes():
@@ -259,7 +257,11 @@ def arhive_notes_generate():
     return str(notes)
 
 
+notifications = True
+
+
 def show_notifications():
+
     if notifications:
         for i in range(len(exam_deadlines)):
             dates_difference = exam_deadlines[i] - datetime.datetime.now()
@@ -285,6 +287,7 @@ arhive_generate()
 with open("archiwum.html", "w", encoding="utf-8") as f:
     f.write('''<!DOCTYPE html><html>  <head>    <meta charset="utf-8" />    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    <title>Archiwum</title>    <meta name="description" content="" />    <meta name="viewport" content="width=device-width, initial-scale=1" />    <link rel="stylesheet" href="archiwum.css" />  </head>  <body>    <div class="scroller">''' +
             arhive_generate()+'''  </div>    <div class="main">'''+arhive_notes_generate()+'''   </div>  </body><script>    note_ids = [      "A",      "B",      "C",      "D",      "E",      "F",      "G",      "H",      "I",      "J",      "K",      "L",      "M",      "N",      "O",      "P",      "Q",      "R",      "S",      "T",      "U",      "V",      "W",      "X",      "Y",      "Z",    ];    current_note = 0;    document.getElementById(note_ids[current_note]).style.display = "block";  </script></html>''')
+arhive_generate()
 show_notifications()
 time.sleep(1000)
 show_notifications()

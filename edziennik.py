@@ -62,6 +62,7 @@ def generate_topic_paragraph(list):
         "szosty",
         "siodmy",
         "osmy",
+        "dziewiaty"
     ]
     paragraphs = ""
     for i in range(len(list)):
@@ -74,7 +75,7 @@ def generate_topic_paragraph(list):
 
 def generate_exam_subject(list):
     sub_ids = ["first", "second", "third", "fourth",
-               "fifth", "sixth", "seventh", "eighth"]
+               "fifth", "sixth", "seventh", "eighth","ninth"]
     subjects = ""
     for i in range(len(list)):
         subject = list[i]

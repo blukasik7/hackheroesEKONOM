@@ -4,20 +4,24 @@ color 2
 cls
 
 echo ---------------------------------------------
-echo        Instalator zaleznosci HHEkonom
+echo.
+echo        Instalator zaleznosci UHUHU
 echo.
 echo        Zawiera:
 echo        - Python 3.12
 echo        - timedelta (Python (PIP^)^)
 echo        - vulcan-api (Python (PIP^)^)
-echo        - Node.js
+echo        - Vulcan (Python (PIP^)^)
+echo        - g4f (Python (PIP^)^)
+echo        - winotify (Python (PIP^)^)
 echo.
-echo        (C^) HHEkonom 2023 Jakub Namyslak
-echo                           Remigiusz Lukasik
-echo                           Bartosz Lukasik
-echo                           Lukasz Piechaczek
-echo                           Jacek Dombrowski
-echo                           All rights reserved
+echo        (C^) UHUHU 2023 Jakub Namyslak
+echo                        Remigiusz Lukasik
+echo                        Bartosz Lukasik
+echo                        Lukasz Piechaczek
+echo                        Jacek Dombrowski
+echo                         All rights reserved
+echo.
 echo ---------------------------------------------
 echo.
 echo --INSTALACJA---------------------------------
@@ -29,6 +33,7 @@ echo.
 echo ---------------------------------------------
 echo.
 echo --PYTHON-------------------------------------
+echo.
 echo 1. Instalacja Pythona
 echo.
 echo Srodowisko wyzej wymienionego
@@ -47,7 +52,7 @@ if /i "%input%"=="y" (
 	echo jest dostepna^).
 	echo.
 	python-3.12.0-amd64.exe
-	echo Czy chcesz sprobowac ponownie?
+	echo Czy chcesz sprobowac ponownie? (y/n^)
 	set /p "input2=Python >>"
 	echo.
 	if /i "!input2!"=="y" (
@@ -59,9 +64,11 @@ if not "%input%"=="y" (
 	echo.
 	echo Python 3.12 nie zostanie zainstalowany.
 )
+echo.
 echo ---------------------------------------------
 echo.
 echo --PIP----------------------------------------
+echo.
 echo 2. Instalacja bibliotek Pythona
 echo.
 echo Jesli Python i pip sa zainstalowane
@@ -74,47 +81,23 @@ set /p "input3=pip >>"
 echo.
 if /i "%input3%"=="y" (
 	echo --LOGI---------------------------------------
+	echo.
 	pip install pip
 	python.exe -m pip install --upgrade pip
 	pip install timedelta
-    pip install vulcan-api
+    	pip install vulcan-api
+	pip install Vulcan
+	pip install aiohttp
 	pip install -U g4f
+	pip install winotify
 )
 if not "%input3%"=="y" (
 	echo Zaleznosci PIP nie zostana zainstalowane.
 )
+echo.
 echo ---------------------------------------------
 echo.
-echo --NODE.JS------------------------------------
-echo.
-echo Node.js z kolei znalazl u nas
-echo zastosowanie w interakcjach
-echo plik-strona. Wykorzystasz
-echo go w trakcie podawania
-echo swoich poswiadczen do
-echo e-dziennika VULCAN.
-echo.
-echo Kontynuowac? (y/n^)
-set /p "input4=Node.js >>"
-if /i "%input4%"=="y" (
-	:instalacja-node
-	echo.
-	echo Przejdz przez proces instalacyjny.
-	echo Opcja 'Tools for Native Modules'
-	echo nie jest wymagana.
-	echo.
-	node-v21.0.0-x64.msi
-	echo Czy chcesz sprobowac ponownie?
-	set /p "input5=Node.js >>"
-	echo.
-	if /i "%input5%"=="y" (
-		echo Reinstalowanie...
-		goto instalacja-node
-	)
-)
-echo ---------------------------------------------
-echo.
-echo -KONIEC-------------------------------------
+echo -KONIEC--------------------------------------
 echo.
 echo To juz wszystkie zaleznosci dotychczas
 echo wykorzystane w tym projekcie.
@@ -126,9 +109,13 @@ echo (y/n^)
 set /p "input6=>>"
 if /i "%input6%"=="y" (
 	echo.
+	echo ---------------------------------------------
+	echo.
+	echo ---------------------------------------------
+	echo.
 	cd ..
 	python pierwsze_uruchomienie.py
 )
 echo.
-echo ---------------------------------------------
+echo ----------------------------------------------
 pause

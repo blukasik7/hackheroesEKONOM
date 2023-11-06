@@ -28,9 +28,6 @@
             extractedData += document.getElementById(ids[i]).value + delimiter;
           }
 
-          //Sprawdź zawartość bez zapisywania pliku
-          console.log(extractedData);
-
           //Stwórz plik.
           var tekst = new Blob([extractedData], {
             type: "text/plain;charset=utf-8",

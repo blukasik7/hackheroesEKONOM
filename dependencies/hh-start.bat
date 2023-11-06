@@ -36,7 +36,8 @@ echo.
 echo 1. Instalacja Pythona
 echo.
 echo Srodowisko wyzej wymienionego
-echo programu jest wykorzystywane
+echo jezyka programowania
+echo jest wykorzystywane
 echo w obrebie naszego projektu.
 echo Jego obecnosc jest krytyczna.
 :instalacja-python

@@ -16,8 +16,8 @@ with open(r"C:\account.json") as f:
 with open(r"C:\keystore.json") as f:
     keystore = Keystore.load(f.read())
 
-
-def check_exist(file_name):
+print("Notatki starsze niż 30 dni są automatycznie usuwane! Pamiętaj, jeżeli chcesz zachować swoją notatkę to przenieś ją na swój dysk.")
+def check_exist(file_name): 
     if os.path.exists(file_name):
         return True
     else:
@@ -185,7 +185,7 @@ if __name__ == "__main__":
                     response = await g4f.ChatCompletion.create_async(
                         model=g4f.models.gpt_35_turbo,
                         messages=[
-                            {"role": "user", "content": "Wygeneruj szczegółową notatkę dzięki której uczeń w pełni przygotuje się na sprawdzian z tematu:" + exam_list[i] + "z przedmiotu szkolnego: " + exam_subjects[i]+". Zawrzyj wszystkie informacje, które mogą być przydatne."}],
+                            {"role": "user", "content": "Wygeneruj szczegółową i długą notatkę dzięki której uczeń w pełni przygotuje się na sprawdzian z tematu: " + exam_list[i] + " z przedmiotu szkolnego: " + exam_subjects[i]+". Zawrzyj wszystkie informacje, które mogą być przydatne."}],
                         provider=provider
                     )
                     #print(response)
@@ -287,4 +287,4 @@ arhive_generate()
 show_notifications()
 time.sleep(1000)
 show_notifications()
-print('___________________________________koniec__________________________________________________')
+print('__________________________________________________koniec__________________________________________________')

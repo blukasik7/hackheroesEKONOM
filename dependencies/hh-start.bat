@@ -3,9 +3,9 @@ setlocal enabledelayedexpansion
 color 2
 cls
 
-echo ---------------------------------------------
+echo ------------------------------------------------
 echo.
-echo        Instalator zaleznosci UHUHU
+echo        Instalator zaleznosci VulcanNotes
 echo.
 echo        Zawiera:
 echo        - Python 3.12
@@ -15,24 +15,24 @@ echo        - Vulcan (Python (PIP^)^)
 echo        - g4f (Python (PIP^)^)
 echo        - winotify (Python (PIP^)^)
 echo.
-echo        (C^) UHUHU 2023 Jakub Namyslak
-echo                        Remigiusz Lukasik
-echo                        Bartosz Lukasik
-echo                        Lukasz Piechaczek
-echo                        Jacek Dombrowski
-echo                         All rights reserved
+echo        (C^) VulcanNotes 2023 Jakub Namyslak
+echo                        	  Remigiusz Lukasik
+echo                        	  Bartosz Lukasik
+echo                        	  Lukasz Piechaczek
+echo                        	  Jacek Dombrowski
+echo                         	  All rights reserved
 echo.
-echo ---------------------------------------------
+echo ------------------------------------------------
 echo.
-echo --INSTALACJA---------------------------------
+echo --INSTALACJA------------------------------------
 echo.
 echo Aby zapewnic poprawne dzialanie programu,
 echo uzytkownik musi pobrac kazda z powyzszych
 echo zaleznosci.
 echo.
-echo ---------------------------------------------
+echo ------------------------------------------------
 echo.
-echo --PYTHON-------------------------------------
+echo --PYTHON----------------------------------------
 echo.
 echo 1. Instalacja Pythona
 echo.
@@ -65,9 +65,9 @@ if not "%input%"=="y" (
 	echo Python 3.12 nie zostanie zainstalowany.
 )
 echo.
-echo ---------------------------------------------
+echo ------------------------------------------------
 echo.
-echo --PIP----------------------------------------
+echo --PIP-------------------------------------------
 echo.
 echo 2. Instalacja bibliotek Pythona
 echo.
@@ -80,7 +80,7 @@ echo Kontynuowac? (y/n^)
 set /p "input3=pip >>"
 echo.
 if /i "%input3%"=="y" (
-	echo --LOGI---------------------------------------
+	echo --LOGI------------------------------------------
 	echo.
 	pip install pip
 	python.exe -m pip install --upgrade pip
@@ -95,9 +95,9 @@ if not "%input3%"=="y" (
 	echo Zaleznosci PIP nie zostana zainstalowane.
 )
 echo.
-echo ---------------------------------------------
+echo ------------------------------------------------
 echo.
-echo -KONIEC--------------------------------------
+echo -KONIEC-----------------------------------------
 echo.
 echo To juz wszystkie zaleznosci dotychczas
 echo wykorzystane w tym projekcie.
@@ -109,13 +109,13 @@ echo (y/n^)
 set /p "input6=>>"
 if /i "%input6%"=="y" (
 	echo.
-	echo ---------------------------------------------
+	echo ------------------------------------------------
 	echo.
-	echo ---------------------------------------------
+	echo ------------------------------------------------
 	echo.
 	cd ..
 	python pierwsze_uruchomienie.py
 )
 echo.
-echo ----------------------------------------------
+echo -------------------------------------------------
 pause

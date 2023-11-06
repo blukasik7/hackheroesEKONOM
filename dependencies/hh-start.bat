@@ -11,7 +11,6 @@ echo        Zawiera:
 echo        - Python 3.12
 echo        - timedelta (Python (PIP^)^)
 echo        - vulcan-api (Python (PIP^)^)
-echo        - Vulcan (Python (PIP^)^)
 echo        - g4f (Python (PIP^)^)
 echo        - winotify (Python (PIP^)^)
 echo.
@@ -86,7 +85,6 @@ if /i "%input3%"=="y" (
 	python.exe -m pip install --upgrade pip
 	pip install timedelta
     	pip install vulcan-api
-	pip install Vulcan
 	pip install aiohttp==3.9.0b0
 	pip install -U g4f
 	pip install winotify

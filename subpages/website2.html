@@ -1,168 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>VulcaNote - Notatki</title>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/x-icon" href="../data/img/notes.png" />
-    <link href="styl.css" type="text/css" rel="stylesheet" />
-  </head>
-  <body>
-    <div style="position: absolute">
-      <a href="hub.html" title="Naciśnij aby wrócić do panelu głównego.">
-        <img
-          src="../data/svg/home-alt-svgrepo-com.svg"
-          style="width: 100px; float: left; margin-left: 100px"
-        />
-      </a>
-    </div>
-    <h1 style="margin-top: 90px; color: white; display: none" id="first">
-      Podstawy przedsiębiorczości
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="second">
-      Matematyka
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="third">
-      Matematyka
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="fourth">
-      Bazy danych
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="fifth">
-      Język polski
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="sixth">
-      Język polski
-    </h1>
-    <h1 style="margin-top: 90px; color: white; display: none" id="seventh">
-      Podstawy programowania
-    </h1>
-    <p style="display: none" id="pierwszy">
-      od str. 30, gospodarowanie , rynek, pieniądz.
-    </p>
-    <p style="display: none" id="drugi">
-      GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa
-    </p>
-    <p style="display: none" id="trzeci">PARAMETRY - poprawa l.1 s.25</p>
-    <p style="display: none" id="czwarty">
-      Sprawdzian MDL cz.2 - materiały w MS Teams
-    </p>
-    <p style="display: none" id="piaty">
-      Odprawa posłów greckich - znajomość lektury
-    </p>
-    <p style="display: none" id="szosty">Wypracowanie z Makbeta</p>
-    <p style="display: none" id="siodmy">Sortowania</p>
-    <br />
-    <div id="left_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div>
-    <main>
-      <object
-        data="../notes/od str. 30, gospodarowanie , rynek, pieniądz..html"
-        style="width: 100%; height: 100%; display: none"
-        id="A"
-      ></object
-      ><object
-        data="../notes/GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa.html"
-        style="width: 100%; height: 100%; display: none"
-        id="B"
-      ></object
-      ><object
-        data="../notes/PARAMETRY - poprawa l.1 s.25.html"
-        style="width: 100%; height: 100%; display: none"
-        id="C"
-      ></object
-      ><object
-        data="../notes/Sprawdzian MDL cz.2 - materiały w MS Teams.html"
-        style="width: 100%; height: 100%; display: none"
-        id="D"
-      ></object
-      ><object
-        data="../notes/Odprawa posłów greckich - znajomość lektury.html"
-        style="width: 100%; height: 100%; display: none"
-        id="E"
-      ></object
-      ><object
-        data="../notes/Wypracowanie z Makbeta.html"
-        style="width: 100%; height: 100%; display: none"
-        id="F"
-      ></object
-      ><object
-        data="../notes/Sortowania.html"
-        style="width: 100%; height: 100%; display: none"
-        id="G"
-      ></object>
-    </main>
-    <div id="right_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div>
-    <div id="circles_div"></div>
-    <script>
-      var ilosc_plikow = 7;
-      var NumberOfCircles = ilosc_plikow;
-      var circles_div = document.getElementById("circles_div");
-      var currentCard = 0;
-      r_arrow = document.getElementById("right_arrow");
-      l_arrow = document.getElementById("left_arrow");
-      r_arrow.addEventListener("click", r_arrow_click, false);
-      l_arrow.addEventListener("click", l_arrow_click, false);
-      function changeCard(stary, nowy) {
-        var div = document.getElementById("circles_div");
-        var kolka = div.getElementsByTagName("div");
-        document.getElementById(ids[stary]).style.display = "none";
-        document.getElementById(ids[nowy]).style.display = "block";
-        kolka[stary].style.background = "white";
-        kolka[nowy].style.background = "black";
-        currentCard = nowy;
-        document.getElementById(p_ids[stary]).style.display = "none";
-        document.getElementById(sub_ids[stary]).style.display = "none";
-        document.getElementById(p_ids[nowy]).style.display = "block";
-        document.getElementById(sub_ids[nowy]).style.display = "block";
-      }
-      function r_arrow_click() {
-        if (currentCard < ilosc_plikow - 1) {
-          changeCard(currentCard, currentCard + 1);
-        }
-      }
-      function l_arrow_click() {
-        if (currentCard > 0) {
-          changeCard(currentCard, currentCard - 1);
-        }
-      }
-      for (let i = 0; i < NumberOfCircles; i++) {
-        const circle = document.createElement("div");
-        circle.setAttribute("id", "circle" + i.toString() + "");
-        circles_div.appendChild(circle);
-        circle.addEventListener("click", CircleFunction, false);
-        circle.name = i;
-      }
-      ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
-      p_ids = [
-        "pierwszy",
-        "drugi",
-        "trzeci",
-        "czwarty",
-        "piaty",
-        "szosty",
-        "siodmy",
-        "osmy",
-      ];
-      sub_ids = [
-        "first",
-        "second",
-        "third",
-        "fourth",
-        "fifth",
-        "sixth",
-        "seventh",
-        "eighth",
-      ];
-      function display_first() {
-        changeCard(0, 0);
-      }
-      display_first();
-      function CircleFunction() {
-        console.log(
-          "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +
-            this.name
-        );
-        changeCard(currentCard, this.name);
-      }
-    </script>
-  </body>
-</html>
+<!DOCTYPE html> <html> <head> <title>VulcaNote - Notatki</title> <meta charset="utf-8" /> <link rel="icon" type="image/x-icon" href="../data/img/notes.png"> <link href="styl.css" type="text/css" rel="stylesheet" /> </head> <body> <div style="position: absolute"><a href="hub.html" title="Naciśnij aby wrócić do panelu głównego.">   <img  src="../data/svg/home-alt-svgrepo-com.svg" style="width: 100px; float: left; margin-left: 100px" />   </a>  </div> <h1 style="margin-top:90px;color:white;display:none;" id="first">Podstawy przedsiębiorczości</h1><h1 style="margin-top:90px;color:white;display:none;" id="second">Matematyka</h1><h1 style="margin-top:90px;color:white;display:none;" id="third">Matematyka</h1><h1 style="margin-top:90px;color:white;display:none;" id="fourth">Bazy danych</h1><h1 style="margin-top:90px;color:white;display:none;" id="fifth">Język polski</h1><h1 style="margin-top:90px;color:white;display:none;" id="sixth">Język polski</h1><h1 style="margin-top:90px;color:white;display:none;" id="seventh">Podstawy programowania</h1><p style="display:none;" id="pierwszy">od str. 30, gospodarowanie , rynek, pieniądz.</p><p style="display:none;" id="drugi">GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa</p><p style="display:none;" id="trzeci">PARAMETRY - poprawa l.1 s.25</p><p style="display:none;" id="czwarty">Sprawdzian MDL cz.2 - materiały w MS Teams</p><p style="display:none;" id="piaty">Odprawa posłów greckich - znajomość lektury</p><p style="display:none;" id="szosty">Wypracowanie z Makbeta</p><p style="display:none;" id="siodmy">Sortowania</p> <br /> <div id="left_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <main><object
+            data="../notes/od str. 30, gospodarowanie , rynek, pieniądz..html"
+            style="width: 100%; height: 100%;display:none"
+             id=A
+            >
+            </object><object
+            data="../notes/GEOMETRIA PŁASKA (TRÓJĄTY) - praca klasowa.html"
+            style="width: 100%; height: 100%;display:none"
+             id=B
+            >
+            </object><object
+            data="../notes/PARAMETRY - poprawa l.1 s.25.html"
+            style="width: 100%; height: 100%;display:none"
+             id=C
+            >
+            </object><object
+            data="../notes/Sprawdzian MDL cz.2 - materiały w MS Teams.html"
+            style="width: 100%; height: 100%;display:none"
+             id=D
+            >
+            </object><object
+            data="../notes/Odprawa posłów greckich - znajomość lektury.html"
+            style="width: 100%; height: 100%;display:none"
+             id=E
+            >
+            </object><object
+            data="../notes/Wypracowanie z Makbeta.html"
+            style="width: 100%; height: 100%;display:none"
+             id=F
+            >
+            </object><object
+            data="../notes/Sortowania.html"
+            style="width: 100%; height: 100%;display:none"
+             id=G
+            >
+            </object> </main> <div id="right_arrow"><img src="../data/img/arrow.png" alt="arrow" /></div> <div id="circles_div"></div> <script>      var ilosc_plikow =7;      var NumberOfCircles = ilosc_plikow;      var circles_div = document.getElementById("circles_div");      var currentCard = 0;      r_arrow = document.getElementById("right_arrow");      l_arrow = document.getElementById("left_arrow");      r_arrow.addEventListener("click", r_arrow_click, false);      l_arrow.addEventListener("click", l_arrow_click, false);      function changeCard(stary, nowy) {        var div = document.getElementById("circles_div");        var kolka = div.getElementsByTagName("div");        document.getElementById(ids[stary]).style.display = "none";        document.getElementById(ids[nowy]).style.display = "block";        kolka[stary].style.background = "white";        kolka[nowy].style.background = "black";        currentCard = nowy;        document.getElementById(p_ids[stary]).style.display = "none";        document.getElementById(sub_ids[stary]).style.display = "none";        document.getElementById(p_ids[nowy]).style.display = "block";        document.getElementById(sub_ids[nowy]).style.display = "block";      }      function r_arrow_click() {        if (currentCard < ilosc_plikow - 1) {          changeCard(currentCard, currentCard + 1);        }      }      function l_arrow_click() {        if (currentCard > 0) {          changeCard(currentCard, currentCard - 1);        }      }      for (let i = 0; i < NumberOfCircles; i++) {        const circle = document.createElement("div");        circle.setAttribute("id", "circle" + i.toString() + "");        circles_div.appendChild(circle);        circle.addEventListener("click", CircleFunction, false);        circle.name = i;      }      ids = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];      p_ids = [        "pierwszy",        "drugi",        "trzeci",        "czwarty",        "piaty",        "szosty",        "siodmy",        "osmy",      ];      sub_ids = [        "first",        "second",        "third",        "fourth",        "fifth",        "sixth",        "seventh",        "eighth",      ];      function display_first() {        changeCard(0, 0);      }      display_first();      function CircleFunction() {        console.log(          "Wywolales funkcję: CircleFunction poprzez naciśnięcie kółka z ID: " +            this.name        );        changeCard(currentCard, this.name);      }    </script></body> </html> 

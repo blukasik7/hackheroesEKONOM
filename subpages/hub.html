@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <link rel="icon" type="image/x-icon" href="../data/img/notes.png">  <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="../data/img/notes.png" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title>VulcaNote - Hub</title>
-    <meta name="description" content="Ta podstrona to hub, służący do nawigowania po naszym projekcie." />
- <meta charset="UTF-8">
-    <meta name="author" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
-    <meta name="owner" content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek">
-    <meta name="rating" content="General">
-    <meta name='HandheldFriendly' content='True'>
-    <meta name='copyright' content='Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek'>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="Ta podstrona to hub, służący do nawigowania po naszym projekcie."
+    />
+    <meta charset="UTF-8" />
+    <meta
+      name="author"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
+    <meta
+      name="owner"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
+    <meta name="rating" content="General" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta
+      name="copyright"
+      content="Remigiusz Łukasik, Bartosz Łukuasik, Jacek Dombrowski, Jakub Namyślak, Łukasz Piechaczek"
+    />
+
     <link rel="stylesheet" href="hub_style.css" />
   </head>
+
   <body>
-    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> Brak</b></div>
+    <script>
+      console.log(window.devicePixelRatio);
+    </script>
+    <div class="szczesliwy_nr">Szczęśliwy numerek: <b> 30</b></div>
     <div class="main">
       <div class="user_welcome">
         <h1>Cześć,</h1>
         <p>Remigiusz Jakub Łukasik</p>
       </div>
       <br />
-      <div class="exams_info">Masz zapowiedziane 8 sprawdzianów!</div>
+      <div class="exams_info">Masz zapowiedziane 7 sprawdzianów!</div>
     </div>
     <div class="kafelki">
       <div class="kafelek">
@@ -51,8 +70,8 @@
             .getElementById("notification")
             .setAttribute("src", "../data/svg/alert-bell.svg");
           var ison = 0;
-  alert("Powiadomienia są teraz wyłączone"); 
-         console.log(ison);
+          alert("Powiadomienia są teraz wyłączone");
+          console.log(ison);
         } else if (
           document.getElementById("notification").getAttribute("src") ==
           "../data/svg/alert-bell.svg"
@@ -61,7 +80,8 @@
             .getElementById("notification")
             .setAttribute("src", "../data/svg/notification_logo.svg");
           var ison = 1;
-   alert("Powiadomienia są teraz włączone");       console.log(ison);
+          alert("Powiadomienia są teraz włączone");
+          console.log(ison);
         }
         $filename = "notification_settings.txt";
         $content = ison;

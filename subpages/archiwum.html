@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title>VulcaNote - Archiwum notatek</title>
     <link rel="icon" type="image/x-icon" href="../data/img/notes.png" />
     <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <link rel="stylesheet" href="archiwum.css" />
   </head>
   <body>
@@ -25,19 +25,20 @@
       </div>
       <div class="kafelek" id="4">odżywianie</div>
       <div class="kafelek" id="5">PARAMETRY - poprawa l.1 s.25</div>
-      <div class="kafelek" id="6">
+      <div class="kafelek" id="6">Sortowania</div>
+      <div class="kafelek" id="7">
         Sprawdzian MDL cz.2 - materiały w MS Teams
       </div>
-      <div class="kafelek" id="7">Wypracowanie z Makbeta</div>
+      <div class="kafelek" id="8">Wypracowanie z Makbeta</div>
     </div>
     <div style="height: 100px; width: 100px; margin-top: 20%">
       <a href="hub.html">
         <img
           src="../data/svg/home-alt-svgrepo-com.svg"
           width="100px;"
+          id="domek"
           style="margin-left: 40px; cursor: pointer"
           title="Naciśnij aby wrócić do panelu głownego."
-          id="domek"
         />
       </a>
     </div>
@@ -73,14 +74,19 @@
         id="F"
       ></object
       ><object
-        data="../notes/Sprawdzian MDL cz.2 - materiały w MS Teams.html"
+        data="../notes/Sortowania.html"
         style="width: 100%; height: 100%; display: none"
         id="G"
       ></object
       ><object
-        data="../notes/Wypracowanie z Makbeta.html"
+        data="../notes/Sprawdzian MDL cz.2 - materiały w MS Teams.html"
         style="width: 100%; height: 100%; display: none"
         id="H"
+      ></object
+      ><object
+        data="../notes/Wypracowanie z Makbeta.html"
+        style="width: 100%; height: 100%; display: none"
+        id="I"
       ></object>
     </div>
   </body>
@@ -113,7 +119,7 @@
       "Y",
       "Z",
     ];
-    numberOfNotes = 8;
+    numberOfNotes = 9;
     current_note = 0;
     document.getElementById(note_ids[current_note]).style.display = "block";
     for (var i = 0; i < numberOfNotes; i++) {

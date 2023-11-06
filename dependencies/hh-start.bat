@@ -87,7 +87,7 @@ if /i "%input3%"=="y" (
 	pip install timedelta
     	pip install vulcan-api
 	pip install Vulcan
-	pip install aiohttp
+	pip install aiohttp==3.9.0b0
 	pip install -U g4f
 	pip install winotify
 )
